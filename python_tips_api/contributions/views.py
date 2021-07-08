@@ -58,11 +58,11 @@ class PostTipsView(generics.CreateAPIView):
 
 class PostTipsView(generics.RetriveUpdateDestroyAPIView):
     """
-    CREATES TIPS AND SAVE USERS TIPS TO DATABASE
+    UPDATES USER'S TIPS AND SAVE USER'S TIPS TO DATABASE
     AFTER FORM VALIDATION IS TRUE:
 
     ARGS:
-            ANYONE CAN CONTRIBUTE TIPS TO THE SITE
+            ONLY OWNER OF TISP CAN UPDATE A TIP
     """
     lookup                  = 'pk'
     serializer_class        = CreateTipSerializer
