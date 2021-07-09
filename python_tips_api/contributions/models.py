@@ -1,5 +1,9 @@
+from __future__ import unicode_literals
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from django.conf import settings
+
 # Create your models here.
 
 
@@ -7,11 +11,11 @@ class Tips(models.Model):
     """
     FORM FIELD FOR USER TO INPUT THEIR PYTHON TIPS 
     """
-    user = models.ForeignKey(self, null=True, blank=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
     tips = models.CharField(blank = False, null =False, max_length = 140)
     twitter_id = models.CharField(blank = False, null = False, max_length = 120)
     email = models.EmailField(blank= False, null = False)
-    created_at = models.DateTimeField(auto_add_now = True)
+    created_at = models.DateTimeField(auto_now_add= True)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='Tips_likes', blank=True, through='TipsLikes')
 
     class Meta:
@@ -22,7 +26,7 @@ class Tips(models.Model):
         return self.username
 
 
-class BlogLikes(models.Model):
+class TipsLikes(models.Model):
     """
     GETS THE TIME LIKES HAPPENED AND ADDS LIKES FUNCTIONALITY
     TO EACH TIP OBJECT
@@ -37,3 +41,9 @@ class BlogLikes(models.Model):
     @property
     def user_info(self):
         return self.user
+
+class TweetsPythonTips(models.Model):
+    """
+    GETS TWEETS FROM CSV DATA AND SAVES TO DATABASE
+    USING THE FOLLOWING MODELS FIELDS
+    """
