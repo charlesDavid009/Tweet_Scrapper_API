@@ -3,7 +3,7 @@ from rest_framework import permissions
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
-    This permission only allows owner to edit posts
+    THIS PERMISSION ALLOWS ONLY OWNERS OF TIPS TO EDITS THE POST
     """
 
     def has_object_permission(self, request, view, obj):
