@@ -47,3 +47,7 @@ class TweetsPythonTips(models.Model):
     GETS TWEETS FROM CSV DATA AND SAVES TO DATABASE
     USING THE FOLLOWING MODELS FIELDS
     """
+    timestamp = models.DateTimeField('Timestamp', auto_now=True)
+    python_tips = models.TextField('Python Tips')
+    twitter_id = models.CharField('Your name or Twitter id', max_length= 200)
+    email = models.EmailField('Your email')

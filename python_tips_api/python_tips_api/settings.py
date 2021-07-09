@@ -30,6 +30,12 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'authentication.User'
 
+DATETIME_FORMAT = "%D/%M/%Y%H:%M:%S"
+
+L10N = False
+
+USE_TZ = False
+
 # Application definition
 
 INSTALLED_APPS = [
