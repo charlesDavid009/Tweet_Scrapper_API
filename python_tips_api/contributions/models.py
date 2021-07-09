@@ -24,7 +24,11 @@ class Tips(models.Model):
 
 class BlogLikes(models.Model):
     """
-    GETS THE TIME LIKES HAPPENED 
+    GETS THE TIME LIKES HAPPENED AND ADDS LIKES FUNCTIONALITY
+    TO EACH TIP OBJECT
+
+    ARGS:
+            GETS TIPS ID AND THEN ADDS IT TO LIKE TABLE
     """
     tip = models.ForeignKey(Tips, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
