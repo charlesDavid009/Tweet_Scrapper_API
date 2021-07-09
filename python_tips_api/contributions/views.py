@@ -66,7 +66,7 @@ class PostTipsView(generics.RetriveUpdateDestroyAPIView):
     """
     lookup                  = 'pk'
     serializer_class        = CreateTipSerializer
-    permission_classes      = [IsAuthenticated, IsOwner]
+    permission_classes      = [IsAuthenticated, IsOwnerOrReadOnly]
 
     def get_queryset(self):
         return Tips.objects.all()
