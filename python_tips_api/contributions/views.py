@@ -71,4 +71,17 @@ class PostTipsView(generics.RetriveUpdateDestroyAPIView):
     def get_queryset(self):
         return Tips.objects.all()
 
+class GetTweetLists(generics.ListAPIView):
+    """
+    GETS ALL TWEETS POSTS ON TWITTER
 
+    ARGS:
+            GETS TWEETS FROM TWITTER ASSCOIATED TO DAILY TIPS PYTHON
+    """
+    serializer_class = TweetSerializer
+
+    def get_queryset(self):
+        """
+        Gets ALL TWEETS SAVED IN DATABASE FROM TWITTER API
+        """
+        qs = Tweets.Objects 
