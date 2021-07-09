@@ -12,6 +12,7 @@ class Tips(models.Model):
     twitter_id = models.CharField(blank = False, null = False, max_length = 120)
     email = models.EmailField(blank= False, null = False)
     created_at = models.DateTimeField(auto_add_now = True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='Tips_likes', blank=True, through='TipsLikes')
 
     class Meta:
         ordering = ['-id']
@@ -19,3 +20,16 @@ class Tips(models.Model):
     @property
     def owner(self):
         return self.username
+
+
+class BlogLikes(models.Model):
+    """
+    GETS THE TIME LIKES HAPPENED 
+    """
+    tip = models.ForeignKey(Tips, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def user_info(self):
+        return self.user
