@@ -84,4 +84,5 @@ class GetTweetLists(generics.ListAPIView):
         """
         Gets ALL TWEETS SAVED IN DATABASE FROM TWITTER API
         """
-        qs = Tweets.Objects 
+        qs = Tweets.Objects.all()
+        return qs
