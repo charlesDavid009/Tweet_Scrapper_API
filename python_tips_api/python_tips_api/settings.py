@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'authentication.User'
 
-DATETIME_FORMAT = "%D/%M/%Y%H:%M:%S"
+DATETIME_FORMAT = "%M/%D/%Y%H:%M:%S"
 
 L10N = False
 

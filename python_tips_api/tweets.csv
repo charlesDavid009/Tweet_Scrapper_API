@@ -1,4 +1,4 @@
-Timestamp,Python Tip:,Your name or Twitter id:,Your email:
+Timestamp,Python Tip:,,Your email:
 2/1/2017 23:32:40,Test,Donald J. Trump @realDonaldTrump,potus@whitehouse.gov
 2/3/2017 0:50:25,"Need to sort a list 's' by multiple criteria? Use  sorted(s, key = lambda x: (x[1], x[2])).
 
@@ -10,7 +10,6 @@ Detail on http://stackoverflow.com/questions/4233476/sort-a-list-by-multiple-att
 [2, 3, 4]
 >>> c
 5",@simecek42,
-
 2/3/2017 0:56:54,"Slices with negative indexing
 >>> a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 >>> a[-4:-2]
@@ -1134,7 +1133,7 @@ import sys
 http://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/index.html",simecek,
 12/11/2017 4:28:57,"List of projects dropping #python 2 support in or before 2020:
 http://www.python3statement.org/ ",karlafej,
-12/11/2017 5:13:39,Compare two floats with math.isclose() to see if they are nearly equal #python ,karlafej,
+12/11/2017 5:13:39,"Compare two floats with math.isclose() to see if they are nearly equal #python ",karlafej,
 12/12/2017 14:13:05,"Wrapping C++ class to Python:
 
 [EXAMPLE NEEDED]
@@ -1230,7 +1229,7 @@ is actually True. Because both '==' and 'in' happens at the same time, the line 
 In  [20]: _2
 Out [20]: 200 https://t.co/TCenrGXd8j 
 ",karlafej,
-12/29/2017 9:47:06,Time for #javascript! Add a beep after a long running cell in #jupyter notebook to let you know when it’s done. https://gist.github.com/iandanforth/fd9c98dc485592e354974e394ff6ae28 by @iandanforth ,karlafej,
+12/29/2017 9:47:06,"Time for #javascript! Add a beep after a long running cell in #jupyter notebook to let you know when it’s done. https://gist.github.com/iandanforth/fd9c98dc485592e354974e394ff6ae28 by @iandanforth ",karlafej,
 12/29/2017 10:25:35,"Create new directories with #pathlib.Path.mkdir() method
 
 import pathlib
@@ -1720,7 +1719,7 @@ affect upstream processes.",simecek,
 >>> np.mean(myarray, axis = (0, 2, 3))
 
 #numpy",karlafej,
-4/17/2018 8:51:47, %xmode verbose magic shows context and also values of the variables that are used in evaluation of an exceptionous expression #IPython #jupyter,karlafej,
+4/17/2018 8:51:47," %xmode verbose magic shows context and also values of the variables that are used in evaluation of an exceptionous expression #IPython #jupyter",karlafej,
 4/18/2018 8:59:08,"Check out swiftapply by @jcarpenter542 : automatically find an efficient way to apply any function to #pandas series/dataframe.
 
 https://medium.com/@jmcarpenter2/swiftapply-automatically-efficient-pandas-apply-operations-50e1058909f9 ",karlafej,
@@ -1906,7 +1905,7 @@ plt.xlabel(r""$xxxx = \sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$"")
 plt.ylabel(""$4\pi t + 2$"")
 
 https://matplotlib.org/users/usetex.html",karlafej,
-6/14/2018 4:32:17,Looking for a project template for #DataScience projects in #Python? Try #cookiecutter data science. https://drivendata.github.io/cookiecutter-data-science/ ,karlafej,
+6/14/2018 4:32:17,"Looking for a project template for #DataScience projects in #Python? Try #cookiecutter data science. https://drivendata.github.io/cookiecutter-data-science/ ",karlafej,
 6/14/2018 8:24:01,"Run a #python script and enter the interactive mode having access to everything defined in the script
 
 python -i foo.py",karlafej,
@@ -2136,7 +2135,7 @@ def myfun(a:int, b:int) -> int:
 
 https://twitter.com/jakevdp/status/1027298136178319360",simecek,
 8/8/2018 22:42:01,Developing in Jupyter? Try nbstripout to solve the notebook merge conflict problem: http://forums.fast.ai/t/git-an-easier-jupyter-notebook-modification-commit-process/20355,simecek,
-8/10/2018 9:09:29,bqplot is a library for interactive plotting in #Jupyter notebooks. Try it yourself: ,karlafej,
+8/10/2018 9:09:29,"bqplot is a library for interactive plotting in #Jupyter notebooks. Try it yourself: ",karlafej,
 8/12/2018 7:57:08,">>> from contextlib import suppress
 >>> with suppress(SpecificError): doing_something()
 
@@ -2454,7 +2453,7 @@ Because sometimes you just need a checkbox in your terminal window.
 https://github.com/kamik423/cutie
 
 (via @randal_olson)",karlafej,
-11/22/2018 15:02:18,The unary ~ (invert) operator yields the bitwise inversion of its integer argument. The bitwise inversion of x is defined as -(x+1). It only applies to integral numbers.  ,KarolinaBzdusek,
+11/22/2018 15:02:18,"The unary ~ (invert) operator yields the bitwise inversion of its integer argument. The bitwise inversion of x is defined as -(x+1). It only applies to integral numbers.  ",KarolinaBzdusek,
 11/26/2018 9:43:20,"When applied to a column of categories, pandas.get_dummies() will convert it into one-hot encoding
 https://stackoverflow.com/a/48170725/9968316",karlafej,
 11/26/2018 18:20:36,"The str() constructor takes an optional second argument for decoding bytes:

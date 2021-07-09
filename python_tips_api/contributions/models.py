@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.utils.translation import gettext as _
 
 # Create your models here.
 
@@ -47,7 +48,6 @@ class TweetsPythonTips(models.Model):
     GETS TWEETS FROM CSV DATA AND SAVES TO DATABASE
     USING THE FOLLOWING MODELS FIELDS
     """
-    timestamp = models.DateTimeField('Timestamp', auto_now=True)
-    python_tips = models.TextField('Python Tips')
-    twitter_id = models.CharField('Your name or Twitter id', max_length= 200)
-    email = models.EmailField('Your email')
+    timestamp = models.DateTimeField(_('Timestamp'), auto_now=True)
+    python_tips = models.TextField(_('Python Tips'))
+    twitter_id = models.CharField(_('Your name or Twitter id'), max_length= 200)
