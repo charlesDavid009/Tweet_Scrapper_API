@@ -1,0 +1,2619 @@
+Timestamp,Python Tip:,Your name or Twitter id:,Your email:
+2/1/2017 23:32:40,Test,Donald J. Trump @realDonaldTrump,potus@whitehouse.gov
+2/3/2017 0:50:25,"Need to sort a list 's' by multiple criteria? Use  sorted(s, key = lambda x: (x[1], x[2])).
+
+Detail on http://stackoverflow.com/questions/4233476/sort-a-list-by-multiple-attributes #python",@simecek42,
+2/3/2017 0:54:11,"#python3 a, *b, c = [1, 2, 3, 4, 5] unpacks as follows
+>>> a
+1
+>>> b
+[2, 3, 4]
+>>> c
+5",@simecek42,
+
+2/3/2017 0:56:54,"Slices with negative indexing
+>>> a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> a[-4:-2]
+[7, 8]
+
+More slicing tips at http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html#id1",@simecek42,
+2/3/2017 0:59:12,"Slice assignment:
+>>> a = range(5)
+>>> a
+[0, 1, 2, 3, 4]
+>>> a[1:-1] = []
+>>> a
+[0, 4]
+
+#python",@simecek42,
+2/3/2017 1:02:14,">>> group_adjacent = lambda a, k: zip(*([iter(a)] * k))
+>>> a = [1, 2, 3, 4, 5, 6]
+>>> group_adjacent(a, 3)
+[(1, 2, 3), (4, 5, 6)]
+#python",@python42,
+2/3/2017 1:05:35,"Inverting dictionary:
+>>> my_map = { 'a': 1, 'b':2 }
+>>> inv_map = {v: k for k, v in my_map.items()}
+>>> inv_map
+{1: 'a', 2: 'b'}
+#python",@simecek42,
+2/3/2017 1:07:45,"Flattening lists:
+a = [[1, 2], [3, 4], [5, 6]]
+list(itertools.chain.from_iterable(a))
+[1, 2, 3, 4, 5, 6]
+#python see http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html#id1",@simecek42,
+2/3/2017 1:10:05,"Name elements in tuples:
+>>> Point = collections.namedtuple('Point', ['x', 'y'])
+>>> p = Point(x=1.0, y=2.0)
+>>> p.x
+1.0
+>>> p.y
+2.0
+#python",@simecek42,
+2/3/2017 1:14:28,"Frequency  count:
+>>> from collections import Counter
+>>> a = [1,2,1,1,2,4,1]
+>>> Counter(a)
+Counter({1: 4, 2: 2, 4: 1})
+
+#python",@simecek42,
+2/3/2017 1:19:33,">>> for c in itertools.combinations([1, 2, 3, 4, 5], 3):
+  print ''.join(str(x) for x in c)
+
+123
+124
+125
+134
+135
+145
+234
+235
+245
+345",@simecek42,
+2/3/2017 1:21:18,"Have ever tried to type
+
+>>> import this
+
+into your python?",@simecek42,
+2/3/2017 1:22:21,"A static HTTP server with #python
+
+python -m SimpleHTTPServer 5000",@simecek42,
+2/3/2017 1:26:29,"Defaultdict can define a perfect tree data structure:
+def tree(): return defaultdict(tree)
+See https://gist.github.com/hrldcpr/2012250 for more",@simecek42,
+2/3/2017 1:32:12,"Measure time of code snippets:
+import timeit
+>>> timeit.timeit('""-"".join(str(n) for n in range(100))', number=10000)
+0.8187260627746
+#python",@simecek42,
+2/3/2017 1:34:48,"Wanna be #python challenged?
+http://www.pythonchallenge.com/pc/def/0.html",@simecek42,
+2/3/2017 1:41:35,#python #rstats Coming from R to Python? See NumPy for R Users http://mathesaurus.sourceforge.net/r-numpy.html,@simecek42,
+2/3/2017 5:00:04,"Iterate over list and get index and value pairs:
+for i, item in enumerate(mylist):
+    print(i, item)
+#python See: https://docs.python.org/3/library/functions.html#enumerate",@karlafej,
+2/3/2017 7:20:14,"Comma as thousand separator:
+>>> '{:,.2f}'.format(1234567.8901)
+'1,234,567.89'
+More examples: https://docs.python.org/3/library/string.html#format-examples",@karlafej,
+2/3/2017 10:38:30,"Select a random item from a list:
+import random
+rand = random.choice(mylist)
+#python",@karlafej,
+2/4/2017 11:28:01,"Unusual use of else
+>>> x = [1]
+>>> while x:
+	print(""Then"")
+	x.pop()
+else:
+	print(""Else"")
+
+Then
+1
+Else
+
+See http://python-notes.curiousefficiency.org/en/latest/python_concepts/break_else.html
+#python",@simecek42,
+2/6/2017 9:51:40,"Print list as separate elements in #python3
+
+>>> L = ['print', 'is', 'fun']
+>>> print(*L)
+print is fun
+>>> print(*L, sep=',')
+print,is,fun",@karlafej,
+2/6/2017 12:46:41,"Use _ in #python console to retrieve the result of the last statement
+>>> 3 + 4
+7
+>>> _ * 3
+21
+For other uses, see: https://hackernoon.com/understanding-the-underscore-of-python-309d1a029edc#.3kspv0vae",@karlafej,
+2/7/2017 5:12:13,"Replace substrings:
+>>> s = 'old old old'
+>>> r = s.replace('old', 'new')
+>>> r
+'new new new'
+#python https://www.tutorialspoint.com/python/string_replace.htm",@karlafej,
+2/7/2017 9:45:29,"is operator tests if variables point the same object:
+>>> a = [1, 2]
+>>> b = [1, 2]
+>>> c = a
+>>> a is b
+False
+>>> a is c
+True 
+#python",@karlafej,
+2/7/2017 10:50:27,"Copy a list by slicing or using the list() function:
+new_list = old_list[:]
+new_list = list(old_list)
+
+#python http://stackoverflow.com/questions/2612802/how-to-clone-or-copy-a-list",@karlafej,
+2/7/2017 15:04:12,"Sorting:
+import operator
+>>> L = [(1,4),(2,3)]
+>>> L.sort(key=operator.itemgetter(1))
+>>> L
+[(2,3),(1,4)]
+
+https://docs.python.org/3.6/howto/sorting.html#operator-module-functions #python",@karlafej,
+2/8/2017 5:27:59,"Select n random items from a list:
+import random
+rand = random.sample(mylist, n)
+#python",@karlafej,
+2/8/2017 7:01:46,"New in #python3.6 - formatted string literals:
+>>> name = Fred
+>>> f'His name is {name}'
+His name is Fred
+
+More: https://cito.github.io/blog/f-strings/ ",@karlafej,
+2/10/2017 8:44:56,">> print(list(itertools.compress('ABCDEFGH', [0,1,1,0,0,0,1,1])))
+['B', 'C', 'G', 'H']
+
+#python",@karlafej,
+2/10/2017 9:54:54,">>> d = collections.deque(range(10))
+>>> d.rotate(2)
+>>> print(d)
+​
+deque([8, 9, 0, 1, 2, 3, 4, 5, 6, 7])
+#python",@karlafej,
+2/13/2017 13:12:21,"Use `pickle` to save #python object into file:
+
+import pickle
+
+a = {""hello"": ""world""}
+ 
+pickle.dump(a, open(""save.p"", ""wb""))
+
+a2 = pickle.load(open(""save.p"", ""rb""))",@simecek42,
+2/13/2017 15:19:44,">>> calendar.isleap(2020)
+True
+#python",@karlafej,
+2/13/2017 15:32:28,"one-character string to Unicode code point:
+
+>>> ord('ř')
+345
+
+…and back:
+
+>>> chr(345)
+'ř'
+
+#python #python3",@karlafej,
+2/14/2017 0:33:32,">>> from math import log
+>>> log(2**31, 2) == 31
+False
+
+For why that is the case in #python, see stackoverflow.com/questions/9319",@simecek42,
+2/15/2017 18:07:45,"Capitalize first letters:
+>>> import string
+>>> string.capwords('some random words')
+'Some Random Words'
+
+#python 
+http://stackoverflow.com/questions/1549641/how-to-capitalize-the-first-letter-of-each-word-in-a-string-python/12336911#12336911",@karlafej,
+2/16/2017 1:30:52,"Make a dictionary of two lists
+
+>>> names = ('bob', 'tim', 'sue', 'ana')
+>>> ages = (35, 27, 45, 13)
+>>> d = dict(zip(names,ages))
+>>> d
+{'bob': 35, 'tim': 27, 'sue': 45, 'ana': 13}",pybites,pybitesblog@gmail.com
+2/16/2017 1:33:33,"#python #fun
+
+>>> from __future__ import braces
+  File ""<stdin>"", line 1
+SyntaxError: not a chance",pybites,pybitesblog@gmail.com
+2/16/2017 1:36:39,"sum can take a generator
+
+sum(LETTER_SCORES.get(char.upper(), 0) for char in word)
+
+(from one of our challenges: http://pybit.es/codechallenge01_review.html)",pybites,pybitesblog@gmail.com
+2/16/2017 1:38:47,"Pythonic named tuples, for example
+
+Tweet = namedtuple('Tweet', 'id_str created_at text')
+
+(e.g. http://pybit.es/codechallenge04_review.html)",pybites,pybitesblog@gmail.com
+2/16/2017 1:40:49,"Builtin max and min accept iterators of datetime!
+
+ dates = [datetime.fromtimestamp(mktime(item['published_parsed'])) for item in items['entries']] # obtained with feedparser
+
+maxdate = max(dates) 
+
+(source: https://github.com/pybites/blog_code/blob/master/katas/pypi/pypi100k.py)",pybites,pybitesblog@gmail.com
+2/19/2017 5:40:52,">>> numbers = ['9','44','8','222']
+>>> max(numbers)
+'9'
+>>> max(numbers, key=int)
+'222'
+#python",@karlafej,
+2/20/2017 23:41:53,"Flatten a list of lists with sum
+
+>>> sum([[1, 2], [3], [4, 5], [6, 7, 8]], [])
+[1, 2, 3, 4, 5, 6, 7, 8]",@pybites,pybitesblog@gmail.com
+2/20/2017 23:45:41,"Reverse a string with negative stride (slicing)
+
+>>> s = 'hello world'
+>>> ''.join(reversed(s))
+'dlrow olleh'
+
+Or:
+>>> s[::-1]
+'dlrow olleh'",@pybites,pybitesblog@gmai.com
+2/22/2017 9:07:24,"Sliding windows:
+>>> a = [1,2,3,4]
+>>> z = (itertools.islice(a,i,None) for i in range(2))
+>>> list(zip(*z))
+[(1, 2), (2, 3), (3, 4)]
+#python",@karlafej,
+2/28/2017 0:54:05,"Get a random permutation of a list:
+
+>>> import numpy as np
+
+>>> mylist = range(10)
+>>> np.random.permutation(mylist)
+
+#python",@simecek,
+3/6/2017 12:25:18,"Check for python version:
+>>> import sys
+>>> sys.version_info >= (2,5)
+True
+>>> if (sys.version_info) < (2,5):
+    raise Exception(""must use python 2.5 or greater"")",@simecek,
+3/7/2017 9:22:10,"Generate command line interfaces from any #python code with Python Fire.
+
+https://opensource.googleblog.com/2017/03/python-fire-command-line.html",@karlafej,
+3/7/2017 13:37:09,"Access Twitter from #python with tweepy and unfollow all your non-followers:
+
+Example: https://dototot.com/write-twitter-bot-python-tweepy-unfollow-non-followers-command-line/",@simecek,
+3/13/2017 10:51:46,"Use sets for intersection of lists:
+>>> a = [1,2,3,4,5,9,10,11]
+>>> b = [4,5,6,7]
+>>> set(a).intersection(b)
+set([4, 5])
+#python",@karlafej,
+3/14/2017 18:28:12,"5-8 character words:
+>>> import re
+>>> s = ‘Fox jumps over regular expressions'
+>>> re.findall(r'\b(\w{5,8})\b', s)
+['jumps', 'regular']",@karlafej,
+3/15/2017 13:19:59,"Too much time spent on installation and settings? Run #Jupyter NB in docker: https://github.com/jupyter/docker-stacks/tree/master/datascience-notebook
+
+(for hackers: https://simecek.github.io/blog/2017/02/17/data-science-amazon-vm-with-start/stop-functionality/)",@simecek,
+3/15/2017 13:26:15,"Do you know R? Add R magic to your #IPython Notebooks:
+https://ragrawal.wordpress.com/2016/08/03/using-r-ggplot-within-ipython-notebook/
+https://ipython.org/ipython-doc/2/config/extensions/rmagic.html
+(add a picture with ggplot2 graph)",@simecek,
+3/18/2017 7:00:02,"Use MappingProxyType as a read-only dictionary:
+https://github.com/topper-123/Articles/blob/master/New-interesting-data-types-in-Python3.rst#typesmappingproxytype
+#python #python3",@karlafej,
+3/20/2017 16:23:44,"Find minimum value and the corresponding key in a dictionary:
+>>> d = {'a':5,'b':2,'c':4}
+>>> min(zip(d.values(),d.keys()))
+(2, 'b')
+#python",@karlafej,
+3/22/2017 16:50:19,"Find N smallest items in a list:
+>>> import heapq
+>>> heapq.nsmallest(N, mylst)
+
+or
+>>> sorted(mylst)[:N]
+
+https://docs.python.org/3.6/library/heapq.html#heapq.nsmallest #python",@karlafej,
+3/22/2017 16:57:43,">>> from fractions import Fraction
+>>> a = Fraction(1,3)
+>>> b = Fraction(5,4)
+>>> print(a+b)
+19/12
+#python https://docs.python.org/3.6/library/fractions.html?highlight=fraction",@karlafej,
+3/29/2017 10:30:22,"Calculate the number of days between two dates:
+
+>>> from datetime import datetime as dt
+>>> (http://dt.now () - dt(2016, 12, 19)).days
+100",pybites,
+3/29/2017 10:43:21,"Process your csv as a collection of OrderedDicts, very convenient for data analysis:
+
+>>> import csv
+>>> with open('names.csv') as csvfile:
+...     reader = csv.DictReader(csvfile)
+...     for row in reader:
+...         print(row['first_name'], row['last_name'])
+
+(If the column names suck you can provide a list yourself via the optional fieldnames in the DictReader constructor)",pybites,
+3/29/2017 16:59:09,"Use named groups (?P) and re.VERBOSE to make more readable regular expressions
+
+URL = re.compile(r""""""
+    ^https://(?:www.)?amazon.com/   # ?: = not capture
+    [^/]+/
+    dp/
+    (?P<asin>[^/]+)  # the numberic asin follows the dp/
+    /ref=.*"""""", re.VERBOSE)
+
+https://github.com/pybites/blog_code/blob/master/amazon/genlink.py",bbelderbos,
+4/3/2017 4:12:36,">>> words = 'I want to get only hello and world'.split()
+>>> indexes = 5, 7
+>>> [words[i] for i, _ in enumerate(range(len(words))) if i in indexes]
+['hello', 'world']
+
+much easier:
+>>> from operator import itemgetter
+>>> itemgetter(*indexes)(words)
+('hello', 'world')",@pybites,
+4/3/2017 23:57:56,"#numpy Slicing vs. indexing:
+> x=np.array(range(1,5))
+> y=x[[1,2]]
+> z=x[1:3]
+> y[0]=9
+> x
+array([1,2,3,4])
+> z[0]=9 
+> x
+array([1,9,3,4])",@simecek,
+4/4/2017 6:42:16,"Use ast_note_interactivity option in #Jupyter notebooks to see the value of multiple statements at once.
+https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/ ",karlafej,
+4/6/2017 7:26:23,"Split string with multiple delimiters #python
+>>> import re
+>>> print(re.split('\W+', 'Hello,world;a:test'))
+['Hello', 'world', 'a', 'test']",@karlafej,
+4/6/2017 8:05:35,"Use fnmatch module to match strings using Unix shell-style wildcard patterns.
+http://fabiosantoscode.blogspot.com/2012/12/wildcards-in-python-fnmatch-module.html
+https://pymotw.com/3/fnmatch/
+#python",@karlafej,
+4/8/2017 15:20:48,"We like zip, what about unzip?
+
+Use: 
+>>> records  = ('Julian', 25), ('Bob', 26), ('Dan', 47), ('Cornelius', 3)
+>>> names, ages = zip(*records)
+>>> names
+('Julian', 'Bob', 'Dan', 'Cornelius')
+>>> ages
+(25, 26, 47, 3)
+
+Or: 
+>>> records = dict(records)
+>>> records.keys()
+dict_keys(['Julian', 'Bob', 'Dan', 'Cornelius'])
+>>> records.values()
+dict_values([25, 26, 47, 3])",pybites,
+4/10/2017 16:16:42,"consecutive pairs:
+>>> mylist = [1, 2, 3, 4]
+>>> a = list(zip(mylist, mylist[1:]))
+>>> print(a)
+[(1, 2), (2, 3), (3, 4)]
+#python",@karlafej,
+4/10/2017 16:37:03,"Merge two dictionaries:
+x = {'a':1, 'b':2}
+y = {'c':3, 'd':4}
+z = {**x, **y}
+
+output:
+z = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+#python3",@karlafej,
+4/10/2017 16:49:02,"#python can vork with complex numbers:
+>>> a = complex(1,2)
+>>> b = 1 - 3j
+>>> print(a+b)
+(2-1j)
+>>> print(abs(a))
+2.23606797749979",@karlafej,
+4/12/2017 10:52:38,"Use collections.Counter().most_common() to find most common words:
+>>> Counter(mylist).most_common(10)
+https://docs.python.org/3/library/collections.html#counter-objects #python",@karlafej,
+4/14/2017 10:04:27,Free #Python Data Science Handbook from @uwescience: https://github.com/jakevdp/PythonDataScienceHandbook,@simecek,
+4/16/2017 17:58:38,"Use folium to generate interactive webmaps from #python.
+https://github.com/python-visualization/folium",@karlafej,
+4/20/2017 8:36:58,"Open a page using the default web browser:
+>>> import webbrowser
+>>> webbrowser.open('https://docs.python.org/3.6/library/webbrowser.html#module-webbrowser')
+True
+#python",@karlafej,
+4/20/2017 15:28:16,"Find the longest string in a list:
+>>> s = ['long', 'short', 'longer']
+>>> max(s, key = len)
+'longer'
+#python ",@karlafej,
+4/21/2017 0:59:28,"Unpacking With * & **
+
+def test(x,y,z):
+	print(x,y,z)
+
+testD = {'x':1,'y':2,'z':3} 
+testL = [4,5,6]
+
+test(*testD)
+test(**testD)
+test(*testL)",@simecek,
+4/21/2017 1:01:54,"Memory Usage Of An Object
+
+>>> import sys
+>>> x=1
+>>> print(sys.getsizeof(x))
+28
+
+#python3",@simecek,
+4/21/2017 1:07:29,"Chaining Of Comparison Operators
+
+>>> n = 10
+>>> result = 1 < n < 20
+>>> print(result)
+True
+>>> result = 1 > n <= 9
+>>> print(result)
+False",simecek,
+4/21/2017 1:50:28,"Split #pandas dataframe into a dictionary of subsets using groupby:
+year_subsets = dict(list(new_df.groupby('Year')))
+http://cgerson.github.io/Pandas-Split/",@karlafej,
+4/21/2017 6:58:49,"Use file seek method to move file pointer:
+>>> f = open('file', 'rb+')
+>>> f.seek(5)     
+https://docs.python.org/3.6/tutorial/inputoutput.html#methods-of-file-objects #python",@karlafej,
+4/24/2017 18:48:14,"Is machine 64 bits? Get uname from Python:
+
+$ python -c 'import platform; print(platform.machine())'
+x86_64
+
+$ python -c 'import platform; print(platform.uname())'
+...",pybites,
+5/1/2017 10:23:32,"If you miss an equivalent of C’s ”?” ternary operator, try
+
+>>> a = 1
+>>> b = 2
+>>> 1 if a > b else -1 
+-1
+
+#python",simecek,
+5/1/2017 10:28:47,"Else Clauses on Loop Statements
+
+>>> x = [1, 2]
+>>> while x:
+     print(""Then"")
+     x.pop()
+   else:
+     print(""Else"")
+
+Then
+2
+Then
+1
+Else
+
+#python",simecek,
+5/1/2017 10:37:55,"locals() and globals() return a dictionary of local / global variables:
+
+>>> a = 1
+>>> b = 1
+>>> locals()
+{'a': 1, 'b': 1, '__builtins__': <module '__builtin__' (built-in)>, '__package__': None, '__name__': '__main__', '__doc__': None}
+
+#python",simecek,
+5/1/2017 11:36:54,"Learn to parse command line arguments with argparse:
+
+(make a figure with the example)
+
+http://stackoverflow.com/questions/7427101/dead-simple-argparse-example-wanted-1-argument-3-results
+https://docs.python.org/2/howto/argparse.html",simecek,
+5/1/2017 16:49:56,"Generate word clouds in #python with wordcloud package:
+https://github.com/amueller/word_cloud",@karlafej,
+5/3/2017 17:30:28,Struggling with matplotlib? Get enlightened at http://pbpython.com/effective-matplotlib.html,simecek,
+5/10/2017 23:14:38,"To check version of #python modules:
+
+$ pip freeze | grep numpy
+numpy==1.8.2
+
+OR
+
+$ python -c ""import numpy; print numpy.__version__""
+1.8.2",simecek,
+5/15/2017 12:56:41,"Image to Numpy array:
+> pic = PIL.Image.open(""foo.jpg"")
+> pix = numpy.asarray(pic)
+
+https://gist.github.com/simecek/e5a7a9de9d568b3e1a291a5982dbd3c2
+http://www.scipy-lectures.org/advanced/image_processing/",simecek,
+5/15/2017 13:04:00,"Use `decode` and `encode` to convert between Unicode and byte strings:
+
+http://stackoverflow.com/a/34695423/1869302
+https://docs.python.org/3.3/howto/unicode.html
+
+#python3",simecek,
+5/15/2017 20:28:54,"In #Python 3.6, dicts now remember order of your values/keys.
+
+(for backwards-compatibility you might still want to use collections.OrderedDict)",simecek,
+5/16/2017 11:15:42,"Drawing #Python Logo in Matplotlib:
+
+[vložit obrázek https://pbs.twimg.com/media/C_pU0JYV0AIrYBw.jpg]
+
+https://gist.github.com/jakevdp/54972317e9cd28e45df37ef6aff13555
+
+by @jakevdp",simecek,
+5/18/2017 9:21:58,"Use functools.partial to reduce the number of arguments to a function:
+https://www.pydanny.com/python-partials-are-fun.html
+#python",@karlafej,
+5/21/2017 17:01:36,#Matplotlib support interactive controls: https://matplotlib.org/examples/widgets/slider_demo.html #python,@karlafej,
+5/22/2017 14:36:19,"Shallow and deep copy:
+>> from copy import copy, deepcopy
+>> a = [1,[2,3]]
+>> b = a
+>> c = copy(a)
+>> d = deepcopy(a)
+>> a[0]=0
+>> a[1][1]=4
+(+ add answer a,b,c,d as an image)",simecek,
+5/25/2017 4:56:33,"Get first and last line of a file:
+>>> with open(""somefile"") as f:
+...    first, *_, last = f.readlines()
+
+#python3",@karlafej,
+5/30/2017 6:31:32,"Working with paths is easy in #Python3
+from pathlib import Path
+d = Path(""/etc"")
+filepath = d/""test.txt""
+if filepath.exists():
+    stuff",@karlafej,
+6/2/2017 18:52:55,"@mydecorator
+def myfun():
+	…
+
+is equivalent to
+
+def myfun():
+	…
+myfun = mydecorator(myfun)
+
+Learn about decorators: 
+https://www.thecodeship.com/patterns/guide-to-python-function-decorators ",simecek,
+6/5/2017 6:06:48,"Use list comprehension to sum two lists element-wise:
+>>> x+y for x, y in zip(list1, list2)
+#python
+",@karlafej,
+6/6/2017 11:29:49,Add interactivity to your #Jupyter notebooks with ipywidgets. http://ipywidgets.readthedocs.io/en/latest/index.html,@karlafej,
+6/6/2017 11:44:49,"Keyword-only args in #python3:
+def f(a, b, *, c=3):
+the only way to access c it is to explicitly call f(a, b, c=1)
+https://www.python.org/dev/peps/pep-3102/",@karlafej,
+6/7/2017 6:57:51,">>> a=collections.Counter([1, 2, 2])
+>>> b=collections.Counter([2, 2, 3])
+>>> a+b
+Counter({2: 4, 1: 1, 3: 1})
+>>> a-b
+Counter({1: 1})",@karlafej,
+6/11/2017 15:17:17,"Read tables from a wabpage into a list of #pandas dataframes:
+dfs = pd.read_html('https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita')",@karlafej,
+6/13/2017 9:23:50,"str.startswith() accepts also a tuple of prefixes to look for:
+>>> ""somestring"".startswith((""aa"", ""xx"", ""z"", ""som""))
+True
+#python",@karlafej,
+6/19/2017 5:28:57,"[f for bar in foo for f in bar]
+
+Meditate what this code does, then try it for foo = [[1,2],[3,4]]
+
+Inspired by @kiwicom247 quiz at #pyconcz",simecek,
+6/19/2017 6:15:53,"Is Python interpreted or compiled? And what are the .pyc created in your folder:
+
+https://softwareengineering.stackexchange.com/questions/24558/is-python-interpreted-or-compiled ",simecek,
+6/19/2017 6:16:18,"> def function(data=[]):
+     data.append(1)
+     return data 
+> function()
+[1]
+> function()
+[1, 1]
+
+Explanation at http://effbot.org/zone/default-values.htm ",,simecek
+6/20/2017 9:07:16,"Check #python process memory usage with psutil:
+>>> pr = psutil.Process(os.getpid())
+>>> print(pr.memory_info().rss)
+http://pythonhosted.org/psutil/#psutil.Process.memory_info",@karlafej,
+6/21/2017 6:53:19,"split iterator into copies:
+x = itertools.count(2, step=2)
+a, b = itertools.tee(x)
+print(next(a)) # 2
+print(next(a)) # 4
+print(next(b)) # 2",karlafej,
+6/21/2017 7:06:55,"Calculate the difference between consecutive elements in list:
+>>> import numpy
+>>> numpy.diff([4,3,21])
+array([-1, 18])
+#python #numpy",karlafej,
+6/21/2017 7:33:55,"Get first n items of generator:
+>>> g = (x**3 for x in range(1,101))
+>>> for x in itertools.islice(g,4):
+...     print(x)
+1
+8
+27
+64
+#python",karlafej,
+6/21/2017 17:31:06,"Common plots in #python, comparison of different modules (useful especially if you come from #ggplot2 world)
+
+http://pythonplot.com/#stacked-bar-chart ",simecek,
+6/22/2017 9:04:08,"Add a progress meter to your loops:
+from tqdm import tqdm
+for i in tqdm(range(10)):
+    do something
+https://github.com/tqdm/tqdm
+#python",karlafej,
+6/30/2017 8:14:57,"When slicing a sequence, the third parameter is the step:
+>>> x = '01234567890'
+>>> x[::3]
+'0369'
+#python",@karlafej,
+6/30/2017 10:12:49,Create XKCD-like plots with #matplotlib: http://jakevdp.github.io/blog/2013/07/10/XKCD-plots-in-matplotlib/ #python,@karlafej,
+7/4/2017 7:01:34,"Use Categoricals for categorical data in #Pandas to improve performance
+df['color'] = df['color'].astype('category')
+http://matthewrocklin.com/blog/work/2015/06/18/Categoricals",karlafej,
+7/4/2017 8:07:00,"#pandas: include user-defined functions in chains with pipe
+http://pandas.pydata.org/pandas-docs/stable/basics.html?highlight=pipe#tablewise-function-application
+https://tomaugspurger.github.io/method-chaining.html
+#python",karlafej,
+7/9/2017 12:45:10,"Use the pathlib module to recursively search for files? 
+>>> from pathlib import Path
+>>> Path('.').glob('**/*.py')
+#pythontip",simecek,
+7/9/2017 12:58:37,"Write data into csv file:
+import csv
+with open(""test.csv"", ""w"") as f:
+	writer = csv.writer(f)
+	for line in data:
+		writer.writerow(line)",simecek,
+7/9/2017 13:17:44,"Use functools.partial to prefill arguments:
+
+> def foo(a,b):
+    return a+b
+> bar = partial(foo, a=1)
+> bar(3)
+4
+
+https://stackoverflow.com/a/15331967",simecek,
+7/10/2017 6:57:26,"The symmetric_difference method finds elements that are in exactly one of the two sets:
+>>> {2,4,6} ^ {1,2,3,4}
+{1, 3, 6}
+#python",karlafej,
+7/10/2017 7:06:11,"Guess the MIME type from the file extension:
+>>> mimetypes.guess_type('test.pyc')
+('application/x-python-code', None)
+#python",karlafej,
+7/10/2017 7:20:06,"Find k closest numbers to a central value:
+k = 4
+cnt = 11
+heapq.nsmallest(k, range(50), key = lambda x: abs(x-cnt))
+[11, 10, 12, 9]
+#python",karlafej,
+7/10/2017 7:33:21,"#python #fun
+from itertools import *
+pi = next(islice(accumulate(map(operator.truediv, cycle([4,-4]), count(1,2))),10000000, None))",karlafej,
+7/14/2017 8:15:49,"re-arrange tuples by indices
+>>> map(operator.itemgetter(2,1,0),[(1,'x','cat'),(2, 'y', 'dog')])
+
+[('cat', 'x', 1), ('dog', 'y', 2)]
+#python",karlafej,
+7/17/2017 7:45:00,"Try this:
+>>> from datetime import date
+>>> 'Today is {0:%A}'.format(date.today())
+#python",karlafej,
+7/18/2017 5:29:27,"a = ""roses""
+b = ""red""
+'{a} are {b}'.format(%%locals())
+
+#python3.6
+f'{a} are {b}'
+'roses are red'
+
+For more, see pyformat.info",simecek,
+7/19/2017 6:49:40,"How to introspect an object in #python:
+
+l = [1, 2, 3]
+dir(l)
+type(l)
+id(l)
+
+# see also inspect module
+import inspect
+inspect.getmembers(l)",simecek,
+7/19/2017 13:27:13,"Use smartcd to activate virtual environment when you cd into folder:
+
+https://github.com/cxreg/smartcd
+http://book.pythontips.com/en/latest/virtual_environment.html
+
+#python #virtualenv",simecek,
+7/19/2017 13:40:36,"List all packages (&version info):
+
+pip freeze > requirements.txt
+
+Install all packages in requirements.txt
+
+pip install -r requirements.txt ",simecek,
+7/19/2017 13:47:49,"Need to plot millions of points in #Matplotlib? mpl-scatter-density to do precisely this!
+
+https://github.com/astrofrog/mpl-scatter-density
+
+by @astrofrog ",simecek,
+7/20/2017 7:32:20,"You can use atexit.register as a decorator:
+@atexit.register
+def goodbye():
+    print("" #python is closing down"")
+
+https://docs.python.org/3/library/atexit.html",karlafej,
+7/24/2017 7:21:48,"Split from right:
+>>> s = ‘1st M Last'
+>>> first, last = s.rsplit(None,1)
+>>> first
+‘1st M'
+>>> last
+'Last'
+#python 
+https://blog.lerner.co.il/five-python-function-parameters-know-use/",karlafej,
+7/26/2017 8:43:55,"Use str.casefold() for case-insensitive string comparisons.
+
+https://docs.python.org/3/library/stdtypes.html#str.casefold
+
+#python",karlafej,
+7/30/2017 14:20:03,"Use @functools.lru_cache decorator to memoize/cache function calls:
+
+https://stackoverflow.com/questions/1988804/what-is-memoization-and-how-can-i-use-it-in-python
+http://book.pythontips.com/en/latest/function_caching.html
+
+#python3 ",simecek,
+8/1/2017 5:50:52,"Working with NumPy arrays instead of Python lists gives you a significant speedup
+
+stackoverflow.com/a/994545
+
+#numpy #python #needforspeed",simecek,
+8/2/2017 5:03:55,"%%HTML magic renders #jupyter notebook cell as HTML, so you can embed an image or other media:
+
+https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/",,simecek
+8/4/2017 8:27:58,"Fetch zipped file without temporary extracting it to disk:
+
+https://gist.github.com/simecek/2641371153eff2a2a87859977a07b240
+
+#python",simecek,
+8/8/2017 10:46:31," %watermark #IPython magic extension outputs version info to make  notebooks reproducible
+https://github.com/rasbt/watermark",karlafej,
+8/8/2017 11:37:09,"#pandas: print summary statistics for a column with df[‘col_name’].describe()
+#python
+",karlafej,
+8/10/2017 14:18:33,Visualize “missingness” of data in your #pandas dataframes with missingno. https://github.com/ResidentMario/missingno,karlafej,
+8/10/2017 17:05:06,"Profile #python code in #Jupyter notebooks with line_profiler:
+%lprun -f myfunc myfunc()
+http://mortada.net/easily-profile-python-code-in-jupyter.html",karlafej,
+8/11/2017 9:19:42,"Pandas_profiling generates profile reports from #pandas dataframe objects.
+https://github.com/JosPolfliet/pandas-profiling
+#python",karlafej,
+8/11/2017 10:04:34,"The -a option to %%cython magic command shows how much of code has not been converted to C 
+#ipython #cython #python",karlafej,
+8/12/2017 3:12:30,"#Matplotlib supports animations.
+https://jakevdp.github.io/blog/2012/08/18/matplotlib-animation-tutorial/ http://matplotlib.org/examples/animation/index.html 
+#python",karlafej,
+8/13/2017 3:48:22,"Ever miscounted the number of 0? Underscores in #python3.6 can help you.
+>>> m = 1_000_000_000
+>>> m
+1000000000
+https://docs.python.org/3/whatsnew/3.6.html#pep-515-underscores-in-numeric-literals",karlafej,
+8/13/2017 3:58:39,"Recall inputs and outputs of previous cells in #Jupyter notebook with In[1], Out[1], _1",karlafej,
+8/13/2017 7:28:03,sys.getsizeof() shows the memory consumption directly attributed to an object. Be sure to add in the sizes for referred-to objects. #python,karlafej,
+8/13/2017 7:46:12,"#python formatting tip:
+d = dict(name = 'Joe', age = 30)
+print('{name} is {age} years old'.format_map(d))
+
+Joe is 30 years old",karlafej,
+8/13/2017 7:58:32,"You can use a comma for extracting a value from a list of length one: ""x, = s"". It's even faster than ""x = s[0]"". #python",karlafej,
+8/14/2017 15:08:14,"Create a download link in your #Jupyter notebook:
+
+from IPython.display import FileLink('data/input.csv')
+
+https://stackoverflow.com/questions/24437661/retrieving-files-from-remote-ipython-notebook-server",simecek,
+8/14/2017 16:09:33,"Fast save/load for numpy arrays = flush/open in bcolz module
+
+(taken from #fastai DL course https://github.com/fastai/courses/blob/master/deeplearning1/nbs/lesson2.ipynb)
+ 
+#needforspeed #python ",simecek,
+8/15/2017 17:43:40,"In Jupyter Notebook, use Shift+Tab to show a tooltip with arguments of function/class and docstring.",simecek,
+8/17/2017 6:16:05,"Pepify your code from #Vim - add this to .vimrc: autocmd FileType python map <buffer> ,f :call Flake8()<CR>",pybites,
+8/17/2017 6:29:56,"Use textwrap and don't worry about where to line break:
+
+>>> from textwrap import wrap
+>>> text = 'The textwrap module provides two convenience functions, wrap() and fill(), as well as TextWrapper'
+>>> wrap(text, 20)
+['The textwrap module', 'provides two', 'convenience', 'functions, wrap()', 'and fill(), as well', 'as TextWrapper']
+
+(just used it to wrap text in a Pillow image: https://github.com/pybites/pillow-flask/blob/master/banner/banner.py - line 92)",pybites,
+8/17/2017 7:52:40,"Check if two words are anagrams:
+
+from collections import Counter
+def is_anagram(s1, s2):
+     return Counter(s1) == Counter(s2)",simecek,
+8/24/2017 4:45:43,https://medium.com/towards-data-science/pandas-tips-and-tricks-33bcc8a40bb9,,
+8/24/2017 10:37:27,Need to write  #python 2/3 compatible code? Check out this cheat sheet: http://python-future.org/compatible_idioms.html,karlafej,
+9/8/2017 10:46:37,"Use parse_dates=True option in pandas.read_csv to automatically recognize dates.
+https://stackoverflow.com/questions/17465045/can-pandas-automatically-recognize-dates
+#python #pandas",karlafej,
+9/15/2017 11:45:55,"List Slicing with None as argument:
+
+>>> a = [0, 1, 2, 3, 4, 5]
+>>> LASTTHREE = slice(-3, None)
+>>> a[LASTTHREE]
+[3, 4, 5]
+
+#python",simecek,
+9/15/2017 11:46:23,"Need a set of sets? Use frozenset:
+
+set([set(['a']), set(['b'])])
+#Error
+
+set([frozenset(['a']), frozenset(['b'])])",simecek,
+9/15/2017 11:47:16,"Equality vs Identity:
+
+>>> a = [""x"", ""y""]
+>>> b = a
+>>> c = [""x"", ""y""]
+
+>>> a == b == c
+True
+>>> a is b
+True
+>>> a is c
+False",,simecek
+9/15/2017 11:48:24,"Because it is Friday...
+
+>>> import antigravity
+
+https://xkcd.com/353/ 
+
+#python #fun #xkcd",simecek,
+9/18/2017 1:01:25,viz https://twitter.com/shravankumar147/status/909294255205765120,simecek,
+9/18/2017 1:04:38,"Boolean values are integers: True + True - False, cf. https://twitter.com/PythonInsta/status/866376781137420292",simecek,
+9/18/2017 1:05:40,defaultdict and json combined: https://twitter.com/PythonInsta/status/884906932787531776,simecek,
+9/21/2017 0:24:21,"Make your numbers human readable:
+
+>>> humanize.intword(123455913)
+'123.5 million'
+
+>>> humanize.naturalday(datetime.datetime.now() - datetime.timedelta(days=1))
+'yesterday'",simecek,
+9/21/2017 10:06:14,"%store magic allows you to pass data between #Jupyter notebooks.
+https://t.co/VDWinlyKuh
+https://t.co/mNmvKudEFq",karlafej,
+9/21/2017 10:06:35,"Find unique items in a #numpy array and count their frequency:
+unique, counts = np.unique(a, return_counts=True)
+https://t.co/AEOJTRtFls",karlafej,
+9/21/2017 10:06:50,"Speed up your functions with numba.jit decorator.
+https://t.co/Vt7MO5FNXW
+#python #numba",karlafej,
+9/21/2017 10:07:14,"Manage your google spreadsheets with the gspread library
+https://t.co/QGcEtF2Z1U
+#python",karlafej,
+9/21/2017 11:23:33,"Find duplicated entries in #pandas dataframe with the duplicated() method.
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.duplicated.html
+#python",karlafej,
+9/23/2017 18:02:15,"You can fork your process with os.fork:
+
+import os
+res = os.fork()
+
+if res == 0:
+    print(""I'm child"")
+else:
+    print(""I'm parent"")
+
+#python",simecek,
+9/25/2017 8:08:38,"Change the look of your plots with only 1 line of code with #matplotlib style sheets. https://matplotlib.org/users/style_sheets.html https://tonysyu.github.io/raw_content/matplotlib-style-gallery/gallery.html
+#python",karlafej,
+9/28/2017 1:16:42,"Play music with #Python
+
+https://twitter.com/shravankumar147/status/913261999378898944",simecek,
+10/1/2017 2:55:16,"Convert an image into LaTeX expression:
+
+https://docs.mathpix.com/?python#processing-a-single-image",simecek,
+10/9/2017 6:19:46,pivottablejs - drag’n’drop pivot tables for your #jupyter notebook. http://nicolas.kruchten.com/content/2015/09/jupyter_pivottablejs/,karlafej,
+10/16/2017 0:53:54,"tempC = (tempF-32)*(9/5)
+
+Why is this (Fahrenheit -> Celsius) wrong in Python 2 and what to do about it
+
+http://www.informit.com/articles/article.aspx?p=1439189",simecek,
+10/16/2017 0:54:52,"JSAnimation is now included in Matplotlib 2.1.0
+
+http://nbviewer.jupyter.org/gist/ocefpaf/9730c697819e91b99f1d694983e39a8f
+
+What else is new?
+
+https://matplotlib.org/users/whats_new.html#new-in-matplotlib-2-1
+
+#python",simecek,
+10/16/2017 0:55:22,"Why NOT to create a 10x10 matrix of zeroes like this?
+
+> row = [0] * 10
+> matrix = [row] * 10
+
+Hint:Try
+> matrix[3][3] = 1
+> matrix
+
+#python",simecek,
+10/16/2017 0:56:12,"Make a slideshow from your #Jupyter Notebook:
+
+https://medium.com/@mjspeck/presenting-code-using-jupyter-notebook-slides-a8a3c3b59d67
+http://damianavila.github.io/RISE/",simecek,
+10/16/2017 1:38:56,"Do you want to stress you the variable is throw away? Use _, for example
+
+name, _ = 'bida.bombu.foo'.split('.', 1)
+
+or 
+
+[list([0]*10) for _ in range(10)]
+
+#python
+",simecek,
+10/16/2017 22:41:24,"Memory size of any numpy array:
+
+>>> import numpy as np
+>>> Z = np.zeros((10,10))
+>>> print(""%d bytes"" % (Z.size * Z.itemsize))
+",simecek,
+10/16/2017 22:50:36,"where' finds indexes of all Trues in #NumPy array:
+
+> import numpy as np
+> a = [1,2,0,0,4,0]
+> a != 0
+> np.where(a != 0)
+> np.nonzero(a)",simecek,
+10/17/2017 4:50:11,"https://python-graph-gallery.com/
+Python Graph Gallery: Learn how to visualize data in #python",karlafej,
+10/17/2017 6:57:02,"Try this:
+>>> a = 256
+>>> b = 256
+>>> a is b
+
+>>> a = 257
+>>> b = 257
+>>> a is b
+
+#python 
+https://docs.python.org/3/c-api/long.html
+https://stackoverflow.com/questions/306313/is-operator-behaves-unexpectedly-with-integers",karlafej,
+10/22/2017 15:31:41,"Use Ctrl (or Cmd on Mac) + mouse clicks for multicursors in #jupyter notebooks.
+http://swanintelligence.com/multi-cursor-in-jupyter.html",karlafej,
+10/22/2017 15:35:37,"Want colorful terminal spinners? Try halo. 
+https://github.com/ManrajGrover/halo
+#python",karlafej,
+10/23/2017 18:19:51,"Get a random number from a range with 'randomrange':
+
+>>> import random
+>>> random.randomrange(0,10,2) + 1
+
+#python",simecek,
+10/24/2017 3:39:26,"Colab, Google's fork of #Jupyter notebook with remote kernels is now publicly available at
+
+https://colab.research.google.com
+https://research.google.com/colaboratory/faq.html",simecek,
+10/25/2017 9:30:41,"Use difflib.SequenceMatcher.find_longest_match to find longest common substring of two strings.
+https://docs.python.org/3.6/library/difflib.html#difflib.SequenceMatcher.find_longest_match
+#python",karlafej,
+10/25/2017 18:30:19,"is not' is a binary operator, different from using is and not separately:
+
+> 'something' is not None
+True
+> 'something' is (not None)
+False",simecek,
+10/27/2017 18:11:11,"What is the result of the following expression?
+
+0 * np.nan
+np.nan == np.nan
+np.inf > np.nan
+np.nan - np.nan
+0.3 == 3 * 0.1
+(solution: nan, False, False, nan, False)
+http://www.labri.fr/perso/nrougier/teaching/numpy.100/index.html",simecek,
+10/27/2017 18:15:06,"Create a matrix with chessboard pattern of 0s and 1s:
+
+Z = np.zeros((8,8),dtype=int)
+Z[1::2,::2] = 1
+Z[::2,1::2] = 1
+print(Z)
+http://www.labri.fr/perso/nrougier/teaching/numpy.100/index.html",simecek,
+10/27/2017 18:21:07,"Numpy: Find the index of the minimal value in an array Z:
+
+np.unravel_index(Z.argmin(), Z.shape)
+
+#numpy #python",simecek,
+10/27/2017 19:01:46,"Import * can be dangerous:
+
+>>> print(sum(range(5),-1))
+9
+>>> from numpy import *
+>>> print(sum(range(5),-1))
+10",simecek,
+10/27/2017 19:22:30,"What is NumPy equivalent of enumerate?
+
+Z = np.arange(9).reshape(3,3)
+for index, value in np.ndenumerate(Z):
+    print(index, value)
+for index in np.ndindex(Z.shape):
+    print(index, Z[index])",simecek,
+10/27/2017 19:33:05,"New in Python >3.5: operator for matrix multiplication @
+
+import numpy as np
+a = np.ones(2,3)
+b = np.ones(3,4)
+a @ b",simecek,
+11/1/2017 7:36:18,"Want colorful terminal spinners? Try halo. 
+github.com/ManrajGrover/h…
+#python",karlafej,
+11/1/2017 21:42:10,A short esoteric Python string tutorial from @dabeaz: https://twitter.com/dabeaz/status/925787482515533830,simecek,
+11/2/2017 0:49:50,"Struggling for PDF generation using #Python. Use ReportLab API. Install using ""conda install -c anaconda reportlab "" ",ratneshkush,ratnesh.kush@yahoo.in
+11/6/2017 11:21:43,"Jeremy Schulman @nwkautomaniac
+#python - I've worked with many schema validators, but this one is the best! pypi.python.org/pypi/lollipop  @PythonWeekly @python_tip",simecek,
+11/13/2017 3:10:40,Use exclamation mark to execute a shell command in #Jupyter notebook.,karlafej,
+11/14/2017 4:46:02,"Find indices of N elements of a #numpy array that are neares to a given value:
+np.argsort(np.abs(myarray-0.5))[:N]
+#python",karlafej,
+11/14/2017 4:56:24," Add extra dimensions to a #numpy array using the keyword None when indexing
+https://stackoverflow.com/a/9511135
+#python",karlafej,
+11/16/2017 3:17:44,"Select a random sample from a 1D array:
+>>> np.random.choice(['cat', 'dog', 'pig', 'cow', 'sheep', 'duck'], 3, replace=False)
+#numpy #python",karlafej,
+11/17/2017 8:43:40,"Friday #python magic:
+>>> x = (1 << 53) + 1
+>>> x + 1.0 < x
+True
+
+Explanation: https://github.com/cosmologicon/pywat/blob/master/explanation.md#mixing-numerical-types",karlafej,
+11/27/2017 10:15:11,"Use feather for fast storage of dataframes:
+
+import feather
+path = 'my_data.feather'
+feather.write_dataframe(df, path)
+df = feather.read_dataframe(path)
+
+#python 
+https://blog.rstudio.com/2016/03/29/feather/",karlafej,
+11/27/2017 18:35:15,"#Jupyter If you are using the IPython kernel, you can save the actual execution history to a notebook with %notebook magic: 
+
+%notebook -e history.ipynb",simecek,
+11/28/2017 4:27:55,"Restore normal dict behavior of a defaultdict by setting
+>>> d.default_factory = None
+#python",karlafej,
+11/29/2017 8:41:12,"Do you want collapsible headings, prettified code and more in your #jupyter notebook? Try Jupyter notebook extensions. https://github.com/ipython-contrib/jupyter_contrib_nbextensions",karlafej,
+11/30/2017 0:01:11,"You do not have to specify object's type in Python but with #pep484 you can hint it
+
+def greeting(name: str) -> str:
+    return 'Hello ' + name
+
+https://www.python.org/dev/peps/pep-0484/
+
+#pythontip #typehinting #python3",simecek,
+11/30/2017 5:13:11,"numpy.nan_to_num() replaces nan with 0, inf with a very large float, and -inf with the most negative float. https://docs.scipy.org/doc/numpy-1.9.2/reference/generated/numpy.nan_to_num.html
+#numpy #python",karlafej,
+12/1/2017 5:23:57,"What output do you expect?
+F = [lambda x: x**i for i in range(10)]
+print([g(2) for g in F])
+",karlafej,
+12/5/2017 20:51:26,"#Python3 is coming but many of us still need to use Python2. Those four lines can save you a lot of work 1-2 years from now:
+
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+http://python-future.org/quickstart.html",simecek,
+12/5/2017 20:52:37,"Learn to debug with #pdb
+
+https://pythonconquerstheuniverse.wordpress.com/2009/09/10/debugging-in-python/",simecek,
+12/6/2017 12:58:11,"Do you want to log, use flags and test your code the way Google does it? Try its open-sourced Abseil library:
+
+https://github.com/abseil/abseil-py",simecek,
+12/6/2017 13:29:22,"Need an alternative to XML/JSON that is fast, cross-language and not intended for human eyes (dense binary)? Consider protocol buffers:
+
+https://github.com/google/protobuf
+https://dzone.com/articles/protobuf-performance-comparison-and-points-to-make
+",simecek,
+12/8/2017 1:46:50,"Install a conda package in the current #Jupyter kernel
+
+import sys
+!conda install --yes --prefix {sys.prefix} numpy
+
+http://jakevdp.github.io/blog/2017/12/05/installing-python-packages-from-jupyter/index.html",simecek,
+12/11/2017 4:28:57,"List of projects dropping #python 2 support in or before 2020:
+http://www.python3statement.org/ ",karlafej,
+12/11/2017 5:13:39,Compare two floats with math.isclose() to see if they are nearly equal #python ,karlafej,
+12/12/2017 14:13:05,"Wrapping C++ class to Python:
+
+[EXAMPLE NEEDED]
+
+",simecek,
+12/13/2017 6:40:13,"Use operator.methodcaller to find items or sort a list: 
+>>> mylist = ['first', 'second!', 'third!!', 'fourth!!!']
+>>> list(filter(operator.methodcaller('endswith', '!'), mylist))
+#python ",karlafej,
+12/14/2017 4:47:22,"iter() can take two arguments, first one being a function that takes no arguments, second one marks the stop:
+with open('mydata.txt') as fp:
+    for line in iter(fp.readline, '""""):
+        do_something
+
+https://docs.python.org/3/library/functions.html#iter
+#python
+",karlafej,
+12/14/2017 21:07:15,"When a string won't fit on a line, you can use parentheses for implicit line joining:
+
+x = ('Oh my god, this is so long, really '
+     'long long long long long long string')
+x",simecek,
+12/19/2017 16:42:41,"pyautogui library: automate mouse clicks & other interactions with Python! 
+
+see https://twitter.com/jakevdp/status/943215684883857408",simecek,
+12/28/2017 5:28:37,"Nice one to feature some day: 
+
+Twitter hashtag wordcloud in form of twitter logo by Rodolfo - https://twitter.com/FerroRodolfo/status/946293654351736833",pybites,
+12/28/2017 7:23:45,"Use %debug magic in #jupyter notebook to see details of an exception. 
+
+(see the whole thread) https://t.co/lDhNe03UZA ",karlafej,
+12/28/2017 7:25:34,"Fastest way to uniquify a list in #python >=3.6:
+>>> list(set(seq))
+or, if order is important:
+list(dict.fromkeys(seq)) https://t.co/jPKqj9d8yQ ",karlafej,
+12/28/2017 7:25:58,"Draw a tree with #python 
+https://t.co/LFPtKCsWkq
+Happy Holidays! https://t.co/Rfu2EERVpN ",karlafej,
+12/28/2017 7:27:19,"If you did not try turtle graphics yet,  remember, now is better than never:
+
+https://t.co/4luWNTI91J
+
+#turtle #StarryNight #ChristmasTree ",simecek,
+12/28/2017 7:31:50,"2018 is coming! Find all US holidays in the new year:
+
+from http://pandas.tseries.holiday  import USFederalHolidayCalendar as cal
+cal().holidays(start='2018-01-01', end='2018-12-31').to_pydatetime()
+
+What about Easter?
+
+from dateutil.easter import easter
+easter(2018)
+
+#pythontip",simecek,
+12/28/2017 7:34:44,"Shift a bit ten to the left - and you've got 2**10:
+
+>>> 1 << 10
+1024
+
+(via @aaronchall)",simecek,
+12/28/2017 7:36:48,"#Django 2.0 is out:
+* Simplified URL routing syntax
+* Responsive, mobile-friendly contrib.admin
+* Python 2.7 no longer supported https://t.co/tmUPNDDVRB ",simecek,
+12/28/2017 7:38:50,"Learn from @jackdbd about Dash and its differences from #rstats Shiny:
+
+https://t.co/IF4PQizU4g
+
+#python #dash ",simecek,
+12/28/2017 7:39:48,">>> a = [2, 1, 3]
+>>> sorted(a) == sorted(a)
+True
+>>> reversed(a) == reversed(a)
+False
+
+Explanation: reversed(a) is an iterator, not a list
+
+>>> type(sorted(a))
+<type 'list'>
+>>> type(reversed(a))
+<type 'listreverseiterator'>
+>>> id(reversed(a))
+139938992007504",simecek,
+12/28/2017 7:40:26,"Comparison operator chaining, the reason why 
+
+>>> False == False in [False]
+
+is actually True. Because both '==' and 'in' happens at the same time, the line is equivalent to 
+
+(False == False) and (False in [False])",simecek,
+12/28/2017 9:06:14,"In #jupyter notebook, you can use _N to get the output of N-th cell:
+
+In  [20]: _2
+Out [20]: 200 https://t.co/TCenrGXd8j 
+",karlafej,
+12/29/2017 9:47:06,Time for #javascript! Add a beep after a long running cell in #jupyter notebook to let you know when it’s done. https://gist.github.com/iandanforth/fd9c98dc485592e354974e394ff6ae28 by @iandanforth ,karlafej,
+12/29/2017 10:25:35,"Create new directories with #pathlib.Path.mkdir() method
+
+import pathlib
+pathlib.Path('/my/new/directory').mkdir(parents=True, exist_ok=True) 
+
+This creates all missing parents
+and doesn't raise an exception if the directory already exists.
+
+#python 3
+
+",karlafej,
+1/9/2018 3:46:50,"pandas.cut() can be used to turn a continuous variable into a categorical one. https://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html
+#python #pandas ",karlafej,
+1/10/2018 3:27:55,"You can use csv.Sniffer() to guess the delimiter for you.
+docs.python.org/2/library/csv.…
+
+#python",karlafej,
+1/10/2018 21:28:10,"A common transformation for non-negative data containing zeroes is f(x) = log(1+x). With #numpy use 'log1p(x)', not 'log(x)+1', to get a better precision for small numbers.
+>>> import numpy as np
+>>> np.log1p(1e-99)
+1e-99
+>>> np.log(1 + 1e-99)
+0.0
+
+The inverse function is 'expm1'.
+
+#pythontip #numpy",simecek,
+1/11/2018 4:21:53,"Read a csv into #pandas dataframe while interpreting “,” as a thousands seperator:
+df = pd.read_csv('example.csv', thousands=',')
+https://chrisalbon.com/python/data_wrangling/pandas_dataframe_importing_csv/
+#python",karlafej,
+1/12/2018 9:54:09,"split pandas dataframe into two random subsets:
+>>> from sklearn.model_selection import train_test_split
+>>> train, test = train_test_split(df, test_size=0.2)
+
+#python",karlafej,
+1/19/2018 18:34:16,"The tilde ~ is the unary negation operator:
+
+>>> import numpy as np
+>>> ~ np.array([True,False])
+array([False,  True], dtype=bool)
+
+Be aware that using ~ to scalars can lead to unexpected results:
+
+ >>> ~ True
+-2
+>>> ~ False
+-1
+>>> ~ np.isfinite(np.inf)
+True
+",simecek,
+1/19/2018 18:55:22,"Does your #numpy array contain missing values? 
+
+>>> import numpy as np
+>>> x = np.array([1,2,3,np.nan])
+
+No problem. You can remove them:
+
+>>> x[~np.isnan(x)]
+array([ 1.,  2.,  3.])
+
+Or replace them by a number:
+
+>>> np.nan_to_num(x,0)
+array([ 1.,  2.,  3.,  0.], copy=True))
+
+Or use a function than can handle missing values:
+>>> np.nanmean(x)
+2.0
+ ",simecek,
+1/19/2018 19:38:45,"Speed-up your array-oriented and math-heavy Python code with numba using @jit (= just-in-time compilation) decorator:
+
+from numba import jit
+from numpy import arange
+
+# jit decorator tells Numba to compile this function.
+@jit
+def sum2d(arr):
+    M, N = arr.shape
+    result = 0.0
+    for i in range(M):
+        for j in range(N):
+            result += arr[i,j]
+    return result
+
+a = arange(9).reshape(3,3)
+print(sum2d(a))
+
+https://numba.pydata.org/",simecek,
+1/19/2018 22:22:27,"Microsoft offers free #Jupyter notebooks in the cloud:
+
+https://notebooks.azure.com/
+
+Even better, Google's free Colaboratory notebooks (http://colab.research.google.com/) now comes with NVIDIA Tesla K80 GPU.  
+
+https://www.kaggle.com/getting-started/47096#post271139
+
+Crazy! #pythontip #deeplearning",simecek,
+1/21/2018 20:57:58,"Know the difference between append() and extend():
+
+>>> x = [1,2,3]
+>>> x.append([4,5])
+>>> x
+[1, 2, 3, [4, 5]]
+>>> x.extend([6,7])
+>>> x
+[1, 2, 3, [4, 5], 6, 7]
+>>> x.extend(""abc"")
+>>> x
+[1, 2, 3, [4, 5], 6, 7, 'a', 'b', 'c']
+
+https://stackoverflow.com/questions/252703/difference-between-append-vs-extend-list-methods-in-python",simecek,
+1/22/2018 8:18:17,"Use #pathlib for recursive globbing:
+>>> import pathlib
+>>> images = pathlib.Path('/mypath/').glob('**/*.png')
+>>> list(images)
+
+https://docs.python.org/3/library/pathlib.html#basic-use
+
+#python3",karlafej,
+1/23/2018 0:29:50,"Complex is better than complicated.
+One liners are not the same thing as concise
+
+https://twitter.com/raymondh/status/955647324792938496
+
+(via @raymondh and @jackdied)",simecek,
+1/23/2018 8:54:07,"Use #pandas to extract values from a file as a #numpy array:
+
+val = pd.read_csv(""./dl/val.csv"")['mask'].values
+
+#python",karlafej,
+1/24/2018 12:13:51,"Find frequency of values in #pandas dataframe with value_counts() method. 
+
+>>> df.groupby('State')['Industry'].value_counts()
+
+#python",karlafej,
+1/25/2018 10:10:14,"You can set a threshold for dropping NA values in #pandas dataframes, for example
+
+df.dropna(thresh=5)
+
+won't drop a row if 5 or more of the values are not NA
+
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.dropna.html
+#python",karlafej,
+1/26/2018 13:15:27,"
+Daily Python Tip @python_tip
+now
+Add interactivity to #matplotlib plots inside #Jupyter notebooks with %matplotlib notebook magic.",karlafej,
+1/28/2018 19:51:39,"Create an interactive map of your followers' locations in #Jupyter notebook:
+
+https://gist.github.com/simecek/fa9f995cafc6fa4f878a8ee0e7a2d3cf
+
+It is amazing to see that @python_tip is now followed from 96 countries. Thank you all.
+
+#tweepy #googlemaps #gmaps ",simecek,
+1/28/2018 19:52:02,"Compare distributions of two variables with seaborn.violinplot:
+
+df = pd.DataFrame({""Group"": 50*[""A""] + 50*[""B""], ""Y"": np.random.normal(2, 1, 100) + np.array([0]*50 + [1]*50)})
+sns.violinplot(df.Group, df.Y, inner=""quartile"")
+plt.show()",simecek,
+1/28/2018 19:54:27,"Grouped violinplots with split violins
+
+import seaborn as sns
+sns.set(style=""whitegrid"", palette=""pastel"", color_codes=True)
+
+# Load the example tips dataset
+tips = sns.load_dataset(""tips"")
+
+# Draw a nested violinplot and split the violins for easier comparison
+sns.violinplot(x=""day"", y=""total_bill"", hue=""sex"", data=tips, split=True,
+               inner=""quart"", palette={""Male"": ""b"", ""Female"": ""y""})
+
+http://seaborn.pydata.org/examples/grouped_violinplots.html",simecek,
+1/30/2018 4:11:54,"Unzipping files in Python:
+
+import zipfile
+with zipfile.ZipFile(""file.zip"",""r"") as zip_ref:
+    zip_ref.extractall(""targetdir"")
+
+#zip #pythontip",simecek,
+2/2/2018 15:01:28,memoise (TO BE UPDATED),simecek,
+2/2/2018 15:01:54,promises (TO BE UPDATED),simecek,
+2/6/2018 12:42:56,"Change the maximum number of rows / columns shown when pretty-printing a #pandas dataframe:
+
+pd.set_option('display.max_rows', 200)
+pd.set_option('display.max_columns', 200)
+
+https://pandas.pydata.org/pandas-docs/stable/options.html",karlafej,
+2/7/2018 13:15:09,"Scraping data from Facebook using just urllib:
+
+https://kokes.github.io/blog/2018/02/04/facebook-downloading.html",simecek,
+2/8/2018 4:58:19,"Filter a #pandas dataframe based on a partial string match in a column:
+
+df[df[""name""].str.contains(""Doe"")]",karlafej,
+2/12/2018 13:22:42,"Get the list of module attributes (= all the things that are in the module):
+
+>>> import math
+>>> dir(math)
+['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']",simecek,
+2/12/2018 20:30:28,"python search with image google images
+
+https://stackoverflow.com/questions/11242967/python-search-with-image-google-images?rq=1
+
+[CHCE DOPRACOVAT]",simecek,
+2/12/2018 20:55:32,"@property: pythonic way to use getters and setters
+
+https://www.programiz.com/python-programming/property
+
+[NEEDS EXAMPLE]",simecek,
+2/13/2018 20:45:52,"Jupyter notebook autocompletion and help:
+
+Tab = autocompletion of name
+Shift-tab = arguments of the function/method
+2 x shift-tab, 3 x shift-tab, ?function = more help
+??function = source code
+
+#pythontip",simecek,
+2/13/2018 21:01:28,"Jupyter Notebook: press H to get keyboard shortcuts, learn 5 each day",simecek,
+2/14/2018 16:45:04,"#python lets you run for-loops over partially consumed iterators. This is useful for extracting and skipping over header rows:
+
+  it = iter(f)
+  header = next(it)
+  for line in it:
+      ...
+
+#pythontip from @raymondh",simecek,
+2/21/2018 9:46:31,"Have you tried #JupyterLab? It's pretty cool! Install it with conda or pip.
+https://blog.jupyter.org/jupyterlab-is-ready-for-users-5a6f039b8906
+
+http://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html",karlafej,
+2/21/2018 14:59:28,"If interested in a history of Python, specifically how it become a language of data scientists, see Jake VanderPlas's presentation:
+
+https://speakerdeck.com/jakevdp/intro-to-pydata",simecek,
+2/22/2018 11:02:56,"You can name your slices:
+
+>>> record = ""01234567890123456789I want this0123456789""
+>>> IWANT = slice(20,31) 
+>>> record[IWANT]
+'I want this'
+
+#python #pythontip
+",karlafej,
+2/23/2018 11:46:59,"Keep a limited history of items with collections.deque:
+
+q = deque([1,2,3], maxlen=3)
+q.append(4)
+
+#python",karlafej,
+2/25/2018 21:58:39,"Embarrassingly parallel computation:
+
+# Build Dask Computation
+from dask import compute, delayed
+values = [delayed(process)(x) for x in inputs]
+
+# Multiple Threads
+import dask.threaded
+results = compute(*values, get=dask.threaded.get)
+
+http://dask.pydata.org/en/latest/use-cases.html
+
+#dask
+",simecek,
+2/25/2018 22:07:47,"Python dictionary get() method can be used with a default value:
+
+>>> dict = {'Name': 'Zabra', 'Age': 7}
+>>> print ""Value : %s"" %  dict.get('Age', ""NA"")
+Value : 7
+>>> print ""Value : %s"" %  dict.get('Education', ""NA"")
+Value : NA",simecek,
+3/2/2018 13:16:05,"How to Insert an element at specific index in List?
+
+http://thispointer.com/python-how-to-insert-an-element-at-specific-index-in-list/",simecek,
+3/3/2018 0:46:03,"#humanize = module for human friendly representations
+
+import datetime as dt
+import time
+import humanize
+
+t = dt.datetime.now()
+time.sleep(10)
+humanize.naturaltime(t)
+
+y = dt.date.today()-dt.timedelta(1)
+humanize.naturaldate(y)
+
+(from A.Samuel #PyDataNYC slides) ",simecek,
+3/4/2018 21:49:44,"Matplotlib animation from @jakevdp
+
+Code:
+http://jakevdp.github.io/blog/2013/05/28/a-simple-animation-the-magic-triangle/
+
+[ADD IMAGE, OR TRY DIFFERENT WAY HOW TO PLOT IT]",simecek,
+3/5/2018 11:28:34,"Place p elements randomly in a 2D #numpy array: 
+
+n = 10
+p = 3
+Z = np.zeros((n,n))
+np.put(Z, np.random.choice(range(n*n), p, replace=False),1)
+print(Z)
+
+For more #numpy tips, see https://github.com/rougier/numpy-100/blob/master/100%20Numpy%20exercises.md
+
+#python",karlafej,
+3/6/2018 18:58:14,"[Napsat tweet o rolling average v pandas.Series, abys tam mohl dat obrazky valejicich se pand]",simecek,
+3/8/2018 10:01:05,"Use textwrap.fill() to print long strings so that they fill a specified number of columns.
+
+>>> print(textwrap.fill(long_str, 60))",karlafej,
+3/9/2018 13:14:06,"Select rows of #pandas dataframe where a column of strings contains   a substring with str.contains()
+
+>>> df[df[“col""].str.contains(""abc”)]",karlafej,
+3/16/2018 1:12:43,"A specialized tool often beats a general purpose tool:
+math.sqrt(x) is more accurate than x ** 0.5
+math.log2(x) is more accurate than math.log(x, 2)
+...
+
+ #pythontip from @raymondh",simecek,
+3/18/2018 0:51:42,">>> {True: 'yes', 1: 'no', 1.0: 'maybe'}
+{True: 'maybe'}
+
+Wait, but why?
+* Short explanation: https://stackoverflow.com/a/47803817
+* Long explanation: https://dbader.org/blog/python-mystery-dict-expression
+#pythontip",simecek,
+3/19/2018 8:21:34,"Ridgeline plots are an alternative to violin plots. Make them easily with joypy. https://github.com/sbebo/joypy
+#python #pandas #dataviz ",karlafej,
+3/20/2018 1:18:05,"One more way to combine a list of lists into a single set:
+
+>>> lol = [['a', 'b', 'c'], ['b', 'c', 'd'], ['d', 'e']]
+>>> set().union(*lol)
+set(['a', 'c', 'b', 'e', 'd'])
+
+#pythontip from @raymondh  ",simecek,
+3/20/2018 8:41:05,"Read the content of a file as a string with #pathlib Path.read_text() method.
+https://docs.python.org/3/library/pathlib.html#pathlib.Path.read_text",karlafej,
+3/20/2018 23:25:14,"You may know that
+
+>>> import this
+
+prints the Zen of Python. But have you ever looked into its this.py source code?
+
+https://github.com/python/cpython/blob/master/Lib/this.py
+
+[ALSO ADD AS A PICTURE]",simecek,
+3/21/2018 11:16:28,"Which one is faster?
+df[(df[""A""] > 0) & (df[""A""] < 100)]
+or
+df.loc[(df[""A""] > 0) & (df[""A""] < 100)]
+
+See benchmarks of various operations on #pandas dataframes: https://github.com/mm-mansour/Fast-Pandas
+
+#python #pandas #numpy",karlafej,
+3/22/2018 11:00:59,"IPython ? magic accepts wildcards:
+
+?np.*close*
+
+np.allclose
+np.isclose
+np.real_if_close
+
+#ipython #jupyter ",karlafej,
+4/2/2018 15:01:01,"Unhappy with != inequality operator? FLUFL Uncle Barry will help! 😈
+
+>>> from __future__ import barry_as_FLUFL
+>>> 1 <> 2
+True
+https://www.python.org/dev/peps/pep-0401/",karlafej,
+4/3/2018 8:09:31,"Call a function until a sentinel value is returned with iter()
+
+lines = []
+with open('file.txt') as fp:
+    for line in iter(fp.readline, ''):
+        lines.append(line.strip())
+
+https://stackoverflow.com/questions/38087427/what-are-the-uses-of-itercallable-sentinel
+
+#python",karlafej,
+4/4/2018 11:23:27,"#Pandas: If you know in advance which columns of your data you’d like to use, you can pass them to the usecols argument of pd.read_csv, pd.read_table, etc.",karlafej,
+4/5/2018 12:55:25,"Recursive folder globbing is easy in #python3
+
+imgs = glob.glob('/path/**/*.png')
+or 
+imgs = pathlib.Path('/path').glob('**/*.png')
+
+https://docs.python.org/3/library/glob.html
+https://docs.python.org/3/library/pathlib.html#basic-use",karlafej,
+4/6/2018 10:39:54,"list.sort() and sorted() accept key argument to specify a function which returns what you would like your items sorted by:
+
+mylst.sort(key = lambda x: x[-1])
+
+sorted(mylst, key = lambda x: len(x))
+",karlafej,
+4/6/2018 10:40:46,"list.sort() and sorted() accept key argument to specify a function which returns what you would like your items sorted by:
+
+mylst.sort(key = lambda x: x[-1])
+
+sorted(mylst, key = lambda x: len(x))
+",karlafej,
+4/8/2018 17:37:46,"Print #Pandas Cheat Sheets:
+
+1) basic operations:
+ https://assets.datacamp.com/blog_assets/PandasPythonForDataScience.pdf
+
+2) tidy data & data wrangling:
+https://github.com/pandas-dev/pandas/blob/master/doc/cheatsheet/Pandas_Cheat_Sheet.pdf
+
+#pythontip ",simecek,
+4/8/2018 17:38:07,"Does your project need BOTH Python and R?
+
+1) Call R functions from Python with rpy2 and %R magic (https://bit.ly/2HinRGt)
+
+OR
+
+2) Call Python functions from R using reticulate package (https://bit.ly/2GIjtiS) ",simecek,
+4/8/2018 17:38:37,"Simple way to get the prime numbers less than 50:
+
+>> noprimes = [j for i in range(2, 8) for j in range(i*2, 50, i)]
+>>> primes = [x for x in range(2, 50) if x not in noprimes]
+>>> print(primes)
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+",simecek,
+4/8/2018 17:38:57,"How does Python find modules/packages?
+
+When you try
+
+>>> import spam
+
+Interpreter looks for `spam` in sys.path folders
+
+>>> import sys
+>>> print(sys.path)
+
+You can manipulate sys.path:
+
+>>>  sys.path.append('../path/to/your/modules/')
+>>> print(sys.path)
+
+https://docs.python.org/3/tutorial/modules.html#the-module-search-path ",simecek,
+4/8/2018 17:39:30,CLIF example [NEED WORK],simecek,
+4/11/2018 6:44:37,"PREDELAT, ZOBRAZKOVAT 
+Display a 2D array in #Jupyter notebook with tabulate:
+from IPython.display import HTML, display
+import tabulate
+display(HTML(tabulate.tabulate(pred, tablefmt='html') 
+https://stackoverflow.com/questions/35160256/how-do-i-output-lists-as-a-table-in-jupyter-notebook",karlafej,
+4/13/2018 0:57:27,"How to re import an updated package while in Python Interpreter?
+
+It depends on your version of Python. For 3.4 and newer,
+
+importlib.reload(packagename)
+
+For older versions, see https://stackoverflow.com/questions/684171/how-to-re-import-an-updated-package-while-in-python-interpreter",simecek,
+4/13/2018 1:13:04,"To list all values in pandas DataFrame, use .unique()
+
+To count them, use .value_counts()
+
+import pandas as pd
+reviews = pd.read_csv(""https://raw.githubusercontent.com/davestroud/Wine/master/winemag-data-130k-v2.csv"")
+
+reviews.head()
+reviews.country.unique()
+reviews.country.value_counts() ",simecek,
+4/13/2018 21:52:07," 
+Draw a traveling salesman portrait with Python
+
+http://www.randalolson.com/2018/04/11/traveling-salesman-portrait-in-python/",simecek,
+4/13/2018 21:59:49,"#pythontip from @raymondh:  Changing an environment variable affects the current process and future child processes.
+
+>>> import os, subprocess
+>>> os.environ['USER'] = 'tom'
+>>> subprocess.check_output('echo $USER', shell=True)
+b'tom\n'
+
+The environment for the #python process itself is given to it by its parent.
+This means you can't use a Python script to set environment variables that
+affect upstream processes.",simecek,
+4/16/2018 11:04:48,"round() can accept a negative argument for number of places:
+>>> x = 12345.6789
+>>> round(x)
+12346.0
+>>> round(x,2)
+12345.68
+>>> round(x, -2)
+12300.0
+
+#python",karlafej,
+4/17/2018 7:48:44,"You can pass multiple axes to np.mean as a tuple:
+>>> np.mean(myarray, axis = (0, 2, 3))
+
+#numpy",karlafej,
+4/17/2018 8:51:47, %xmode verbose magic shows context and also values of the variables that are used in evaluation of an exceptionous expression #IPython #jupyter,karlafej,
+4/18/2018 8:59:08,"Check out swiftapply by @jcarpenter542 : automatically find an efficient way to apply any function to #pandas series/dataframe.
+
+https://medium.com/@jmcarpenter2/swiftapply-automatically-efficient-pandas-apply-operations-50e1058909f9 ",karlafej,
+4/20/2018 9:06:25,"Pass functions to .loc[] and .iloc[] for indexing:
+df.loc[lambda x: x.col != 0]
+
+In this way, you can easily chain selection operations.
+http://pandas.pydata.org/pandas-docs/stable/indexing.html#selection-by-callable
+
+#python #pandas",karlafej,
+4/22/2018 20:23:05,"Learn the difference between 'map', 'apply' and 'applymap' methods in Pandas:
+
+https://stackoverflow.com/a/19798528/7651153 ",simecek,
+4/23/2018 3:03:56,"Learn about scikit-learn, a consistent API for machine learning methods, from @amuellerml #rstatsnyc talk
+
+https://github.com/amueller/talks_odt/blob/master/2018/machine-learning-with-scikit-learn-NYC-R.pdf",simecek,
+4/24/2018 14:17:14,Python dictionaries are insertion ordered by default in 3.7+,simecek,
+4/30/2018 9:50:26,"Print calendar of a given month and year:
+>>> import calendar
+>>> print(calendar.month(2018, 5))",karlafej,
+5/2/2018 6:55:23,"Extract tar files using #python
+import tarfile
+with tarfile.open('./datasets/housing/housing.tgz') as tgz:
+    tgz.extractall(path = './datasets/housing') ",karlafej,
+5/3/2018 11:25:49,"zip() is great for transposing 2D data:
+>>> lst = [(1, 2, 3, 4), (5, 6, 7, 8)]
+>>> list(zip(*lst))
+[(1, 5), (2, 6), (3, 7), (4, 8)]
+
+#python",karlafej,
+5/4/2018 10:00:50,"Analyze in the memory usage of your #Python code with memory_profiler. In #Jupyter notebook, you can use %memit and %mprun magic.
+https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/01.07-Timing-and-Profiling.ipynb
+https://pypi.org/project/memory_profiler/
+",karlafej,
+5/4/2018 14:05:22,"For Python 3.5 + :
+String formatting improved
+
+num = 90
+name = Ratnesh
+subject = Algorithm
+
+print(f'I am {name} scored {num} out of 100 in {subject}')",ratneshkush,ratnesh.kush@yahoo.in
+5/9/2018 0:37:55,"Colab (Google's flavor of Jupyter Notebook) can now open/save notebooks directly from Github. Just add your Github path to colab.research.google.com/github/
+
+For example, to open
+github.com/tensorflow/ten…
+use the following URL colab.research.google.com/github/tensorf…
+
+More details at medium.com/tensorflow/col…",simecek,
+5/9/2018 16:38:51,"Keras Cheat Sheet: Neural Networks in Python (by @DataCamp)
+
+https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Keras_Cheat_Sheet_Python.pdf ",simecek,
+5/9/2018 17:12:34,"How to ignore warnings:
+
+> import warnings
+> warnings.filterwarnings('ignore')
+
+You can ignore only a specific type of warnings, for example DeprecationWarning.
+
+warnings.filterwarnings('ignore', 'DeprecationWarning')
+
+For more info,  https://www.lesinskis.com/python_deprecation_tutorial.html",simecek,
+5/9/2018 22:02:24,"Logging in Python
+
+https://www.techatbloomberg.com/blog/guide-logging-python/
+
+[NEEDS WORK]",simecek,
+5/10/2018 21:57:58,Colab snipets and how to get data to Colab [NEEDS WORK],simecek,
+5/11/2018 0:38:43,"#pythontip from @bminor232:
+
+Create #data-pipelines via Pandas method chaining https://tomaugspurger.github.io/method-chaining
+
+[ADD EXAMPLE AS FIGURE] 
+
+Send us your own #pythontip to bit.ly/pythontip",simecek,
+5/11/2018 20:19:28,"Line profiling (as on slide 49 of https://speakerdeck.com/jakevdp/seven-strategies-for-optimizing-numerical-code)
+
+[NEEDS WORK]",simecek,
+5/11/2018 20:46:09,"6+1 #pythontip to Speed-up Your Calculations:
+• Line profiling
+• NumPy vectorization
+• Specialized data structures
+• Cython
+• Numba
+• Dask
+https://speakerdeck.com/jakevdp/seven-strategies-for-optimizing-numerical-code
+[MAYBE ADD A FIGURE]",simecek,
+5/14/2018 6:05:39,str() vs. repr() in Python [NEEDS WORK] https://www.geeksforgeeks.org/str-vs-repr-in-python/,simecek,
+5/14/2018 6:22:59,"Python Style Guides:
+https://www.python.org/dev/peps/pep-0008/
+https://google.github.io/styleguide/pyguide.html
+...
+
+Pylint can help you to check for coding standards. Learn how to integrate it with your IDE: http://pylint.readthedocs.io/en/1.8/user_guide/ide-integration.html
+
+#pythontip #pylint",simecek,
+5/14/2018 10:01:53,"Import your Google sheets into #pandas dataframes using gspread:
+https://gist.github.com/karlafej/2de8ee4f14b74e636418b2ff881c0843
+#python",karlafej,
+5/15/2018 6:16:14,"Difference between list.append() and list.extend(): 
+
+>>> x = [1, 2, 3]
+>>> x.append([4, 5])
+>>> print(x)
+[1, 2, 3, [4, 5]]
+
+>>> x = [1, 2, 3]
+>>> x.extend([4, 5])
+>>> print(x)
+[1, 2, 3, 4, 5]
+
+#python",karlafej,
+5/16/2018 10:19:40,"Need to download a file from #Google #colab?
+
+from google.colab import files
+files.download('model1.h5')",karlafej,
+5/17/2018 13:22:32,"Join the content of two string columns into one column with str.cat() method:
+
+df['c'] = df['a'].str.cat(df['b'], sep=',')
+
+#pandas #python 
+https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.cat.html
+",karlafej,
+5/17/2018 20:12:39,"Select a few PyCon talks, something like https://twitter.com/vboykis/status/997265017937461249 ",simecek,
+5/18/2018 10:11:13,"How to use #tensorboard with Google #colab:
+https://www.dlology.com/blog/quick-guide-to-run-tensorboard-in-google-colab/
+
+#python #DeepLearning",karlafej,
+5/28/2018 6:29:58,"Constrained layout: experimental layout engine in #matplotlib 2.2.
+https://matplotlib.org/tutorials/intermediate/constrainedlayout_guide.html
+#dataviz #python",karlafej,
+5/28/2018 8:25:58,"Visualisation for ML: YellowBrick
+
+Learn more from Ian Ozsvald #pydata talk https://www.youtube.com/watch?v=t6osKvhY6Ro",simecek,
+5/30/2018 8:59:19,"Combine two lists with list comprehension:
+>>> colors = ['red', 'green', 'blue']
+>>> toys = ['car', 'ball', 'duck']
+>>> [[color, toy] for color in colors for toy in toys]",,
+6/1/2018 9:06:04,"pandas.crosstab = cross-tabulation (pivot table) for two categorical variables
+
+import pandas as pd
+a = pd.Categorical([1,1,2,2,2,3,3,1])
+b = pd.Categorical([1,2,2,3,1,1,1,1])
+pd.crosstab(a,b)",simecek,
+6/3/2018 23:00:33,compile and exec commands (Petr Viktorin's talk on #pythoncz) [NEED WORK],simecek,
+6/3/2018 23:24:33,"del does not delete the object, only decrease reference counter https://youtu.be/I5DmlKniTO0?t=7h6m15s [NEEDS WORK]",simecek,
+6/7/2018 3:38:23,"#pythontip from @singhjayp:
+
+How to insert an element into a sorted list and ensure the list remains sorted?
+
+>>> import  bisect
+>>> a = [1, 2, 4, 5] 
+>>> bisect.insort(a, 3)
+>>> print(a)
+[1, 2, 3, 4, 5]",simecek,
+6/7/2018 3:39:01,"From 0 to Pythonic in 7 days. Sssign 🐍 up to Kaggle's 7-day Python Challenge, starting June 11th. 
+
+http://ow.ly/Z5vz30km2bg ",simecek,
+6/7/2018 3:39:18,"New to the standard library: Data Classes = mutable namedtuples with defaults
+
+PEP557: https://www.python.org/dev/peps/pep-0557/
+
+or watch @raymondh's #PyCon2018 talk: https://www.youtube.com/watch?v=T-TwcmT6Rcw
+
+#dataclass #pythontip ",simecek,
+6/11/2018 15:42:23,"F-strings can embed #python (3.6) expressions:
+
+>>> r = 10
+>>> f'Area of a circle with radius {r}: {math.pi*r**2}'
+'Area of a circle with radius 10: 314.1592653589793’
+
+>>> for i in range(3):
+...     f'{i} box{""es""if i!=1 else """"}'
+... 
+'0 boxes'
+'1 box'
+'2 boxes'",karlafej,
+6/12/2018 3:25:55,"Tohle vytezit a smazat, spousta tipu: https://github.com/arogozhnikov/python3_with_pleasure",simecek,
+6/12/2018 9:17:21,"With #doctest, you can define and run tests in docstrings. #python
+https://pymotw.com/2/doctest/",karlafej,
+6/13/2018 10:23:06,"#matplotlib labels can take TeX style strings:
+plt.xlabel(r""$xxxx = \sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$"")
+plt.ylabel(""$4\pi t + 2$"")
+
+https://matplotlib.org/users/usetex.html",karlafej,
+6/14/2018 4:32:17,Looking for a project template for #DataScience projects in #Python? Try #cookiecutter data science. https://drivendata.github.io/cookiecutter-data-science/ ,karlafej,
+6/14/2018 8:24:01,"Run a #python script and enter the interactive mode having access to everything defined in the script
+
+python -i foo.py",karlafej,
+6/15/2018 10:21:55,"Call an external program in #python(3.5) with subprocess.run().
+>>> import subprocess
+>>> proc = subprocess.run([""ls"", ""-l""], stdout=subprocess.PIPE)",karlafej,
+6/18/2018 2:32:04,"In #Python3, the print function has options
+* 'sep' to separate the arguments
+* 'end' to be printed after the last argument
+
+docs.python.org/3/library/func…",simecek,
+6/20/2018 2:36:02,"#pythontip from @singhjayp:
+
+Search multiple dicts using ChainMap
+
+from collections import ChainMap
+
+countryCapital = {'US':'Washinton', 'IN':'Delhi'}
+stateCapital = {'MA':'Boston', 'KA': 'Bangalore'}
+x = ChainMap(countryCapital, stateCapital)
+print(x['IN'], x['MA'])",simecek,
+6/20/2018 20:52:04,"issubclass(): Is a class a subclass of some other class?
+
+>>> class Polygon:
+...     pass
+... 
+>>> class Square(Polygon):
+...     pass
+... 
+>>> issubclass(Square, Polygon)
+True
+>>> issubclass(Polygon, Square)
+False
+>>> issubclass(Square, Square)
+True
+>>> issubclass(unicode, basestring)
+True
+>>> issubclass(str, basestring)
+True",simecek,
+6/20/2018 20:53:09,">>> class MyClass: pass
+
+>>> obj = MyClass()
+>>> obj.__class__.__name__
+'MyClass'
+
+# Functions have a
+# similar feature:
+
+>>> def myfunc(): pass
+
+>>> myfunc.__name__
+'myfunc'",simecek,
+6/22/2018 2:03:30,"The best way to learn to code is by doing it. For a beginner it could be hard to find a project. @pybites prepared Python exercises and projects for you, check it out at CodeChalleng.es
+
+Try one, join #100DaysOfCode and go with us through 
+talkpython.fm/100days",simecek,
+6/23/2018 1:39:58,Use generators when dealing with large data set in deep learning tasks. Each pass of the generator can go for an I/O call. You can also do this on a thread.,@rajatktb,rajatthepagal@gmail.com
+6/23/2018 1:44:46,"Domino animation coded in 10 lines of Python code 
+
+http://slicker.me/blender/domino.htm",simecek,
+6/24/2018 15:45:11,"How Encoding Works in Python2 vs Python3
+
+https://pybit.es/python-encodings.html",simecek,
+6/24/2018 15:53:32,"7 of the top-15 voted pandas questions on Stackoverflow are about indexing:
+
+https://tomaugspurger.github.io/modern-1-intro.html
+
+#pythontip #pandas",simecek,
+6/24/2018 16:01:18,"Troubles with #TensorFlow installation? You are not alone, read
+
+http://www.laurencemoroney.com/tensorflow-to-gpu-or-not-to-gpu/",simecek,
+6/25/2018 21:58:38,"All Python keywords:
+
+https://twitter.com/vboykis/status/1011414603769761792",simecek,
+6/25/2018 22:02:32,"Do you know a keyword nonlocal? #python3
+
+https://www.programiz.com/python-programming/global-local-nonlocal-variables
+https://stackoverflow.com/questions/1261875/python-nonlocal-statement
+
+ ",simecek,
+6/26/2018 8:57:29,"Empty sequence evaluates to False in #python:
+
+>>> lst = list()
+>>> if lst:
+...     print(lst)
+... else:
+...     print(""Empty"")
+...
+Empty",karlafej,
+6/27/2018 10:35:28,"Use maxsplit parameter in str.split to specify maximum number of splits to be done:
+>>> s = ""aa bb cc dd""
+>>> s.split(maxsplit=1)
+['aa', 'bb cc dd']
+
+#python
+https://docs.python.org/3/library/stdtypes.html#str.split",karlafej,
+6/27/2018 20:49:38,"Python 3.7 released
+
+https://www.python.org/downloads/release/python-370/?hn",simecek,
+6/27/2018 21:14:19,"#pythontip from @DynamicWebPaige: if you ever want to inspect the source code for a module that you've imported, but don't want to waste time hunting around for the .py file
+
+import inspect
+import pprint
+
+pprint.pprint( inspect.getsource( <module_name>))
+
+",simecek,
+6/29/2018 10:06:10,"Practise your coding skills by solving puzzles. Try CodinGame https://www.codingame.com/
+
+#python #java #javascript #ruby and more...",karlafej,
+7/3/2018 16:52:53,"Unlike in C, Java, R, ..., there is no overloading of functions in #Python. If you miss it, consider
+
+1) @functools.singledispatch = define a generic function and its specific implementations based on the type of first argument
+https://docs.python.org/3/library/functools.html#functools.singledispatch
+
+2) @typing.overload = for different number of arguments
+https://stackoverflow.com/a/7113162/7651153
+
+3) Using optional argements
+https://stackoverflow.com/a/7113061/7651153",simecek,
+7/3/2018 17:28:40,"zip() is its own inverse (via @jakevdp):
+
+>>> data = [(1, 2, 3), ('a', 'b', 'c')]
+>>> zipped = zip(*data)
+>>> zipped
+[(1, 'a'), (2, 'b'), (3, 'c')]
+>>> unzipped = zip(*zipped)
+>>> unzipped
+[(1, 2, 3), ('a', 'b', 'c')]
+
+#pythontip #zip",simecek,
+7/9/2018 7:41:45,"Confused about #pandas indexing? Check this blogpost by @_brohrer_ : http://brohrer.github.io/dataframe_indexing.html
+
+#pythontip",karlafej,
+7/10/2018 8:39:49,"For string concatenation, s1 += s2 + s3 is faster than s1 = s1 + s2 + s3 because s1 is not destroyed while calculating the complete string.
+
+https://www.codementor.io/satwikkansal/do-you-really-think-you-know-strings-in-python-fnxh8mtha
+
+#python",karlafej,
+7/11/2018 3:20:57,"In #Jupyter notebook, %lsmagic gives you a list of all available magics.
+#pythontip",karlafej,
+7/18/2018 2:04:56,"#SciPy2018 Scientific Computing with Python conference videos are out:
+
+https://www.youtube.com/playlist?list=PLYx7XA2nY5Gd-tNhm79CNMe_qvi35PgUR
+
+Check the introductions to Scikit-learn, #Matplotlib, #NumPy, image analysis, #pandas, #TensorFlow, Bayesian Data Science... ",simecek,
+7/23/2018 14:39:44,how to use PSUtil efficiently https://twitter.com/ori75660/status/1020221099030843393,ori75660,ori75660@gmail.com
+7/24/2018 15:52:27,"You can use #python to multiply strings or tuples:
+>>> 4*'ab'
+'abababab'
+>>> 3*('python', 'tip')
+('python', 'tip', 'python', 'tip', 'python', 'tip')
+>>> 2*(3,1)
+(3, 1, 3, 1)",karlafej,
+7/24/2018 18:41:23,"imageio module to generate gifs
+
+https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/eager/python/examples/generative_examples/dcgan.ipynb
+
+[NEED WORK]",simecek,
+7/24/2018 18:55:13,"concurrent.futures a multithreading vs multiprocessing
+
+https://medium.com/@bfortuner/python-multithreading-vs-multiprocessing-73072ce5600b
+
+[NEEDS WORK]",simecek,
+7/24/2018 19:20:15,"Kaggle blackjack microchallenge
+
+https://www.kaggle.com/simecek/kernels/notebooks/new?forkParentScriptVersionId=4725144",simecek,
+7/25/2018 6:45:55,"Check from which module was the function imported: foo.__module__
+
+>>> sum.__module__
+'builtins'
+>>> from numpy import * # don't do this ;)
+>>> sum.__module__
+'numpy.core.fromnumeric'
+
+#python",karlafej,
+7/26/2018 6:42:51,"Get the directory path of a #python script from within itself:
+
+import os
+print(os.path.dirname(os.path.realpath(__file__)))
+
+or
+
+from pathlib import Path
+print(str(Path(__file__).resolve().parent))
+
+
+",karlafej,
+7/27/2018 8:37:42,"pathlib.Path has methods for reading and writing files:
+
+from pathlib import Path
+fname = Path('sometxt.txt')
+fname.write_text(""Pathlib is great"")
+print(fname.read_text())
+
+#python3 #python #pathlib",karlafej,
+7/27/2018 8:40:18,"Check plotly.py 3.0: fast rendering of big datasets, integration with #Jupyter notebooks... medium.com/@plotlygraphs/… #plotly #python",karlafej,
+8/6/2018 5:47:23,"Be careful when reversing #unicode strings. You may be surprised…
+
+>>> s = ""Welcome in 🇬🇧”
+>>> s[::-1]
+'🇧🇬 ni emocleW'",karlafej,
+8/6/2018 5:47:59,"Use pd.read_clipboard() to copy and paste a table into dataframe.
+https://stackoverflow.com/questions/31610889/how-to-copy-paste-dataframe-from-stackoverflow-into-python
+#pandas ",karlafej,
+8/7/2018 19:38:54,"To define a Python class, you usually need to define methods __init__, __repr__, __eq__, __hash__, __le__, ... This can be tedious, however, many cases are now covered by @dataclass and @attr.s decorators:
+
+@dataclass # or @attr.s(auto_attribs=True)
+class Coordinates(object):
+  x : float
+  y : float
+
+[ADD IMAGE WITH EXAMPLE]
+",simecek,
+8/8/2018 8:55:24,"Get number of Null values in a #pandas dataframe:
+
+df.isnull().sum() (column wise)
+
+df.isnull().sum(axis=1) (row wise)
+
+#python",karlafej,
+8/8/2018 9:26:59,"Add annotations to your #python functions to give hints about  how the function is supposed to be used. (They are not type checks and they don't alter python behavior!)
+
+def myfun(a:int, b:int) -> int:
+    return a + b",karlafej,
+8/8/2018 22:38:26,"lru_cache decorator in Python3
+
+https://twitter.com/jakevdp/status/1027298136178319360",simecek,
+8/8/2018 22:42:01,Developing in Jupyter? Try nbstripout to solve the notebook merge conflict problem: http://forums.fast.ai/t/git-an-easier-jupyter-notebook-modification-commit-process/20355,simecek,
+8/10/2018 9:09:29,bqplot is a library for interactive plotting in #Jupyter notebooks. Try it yourself: ,karlafej,
+8/12/2018 7:57:08,">>> from contextlib import suppress
+>>> with suppress(SpecificError): doing_something()
+
+will not propagate SpecificError if it is raised while doing_something()
+
+#pythontip #exceptions ",simecek,
+8/16/2018 16:19:02,"@raymondh
+#python tip: It is easy to capture the output of functions that print to the terminal:
+
+with open('help.txt', 'w') as f:
+    with contextlib.redirect_stdout(f):
+        help(pow)
+
+https://twitter.com/raymondh/status/1030160198600548352",,
+8/16/2018 17:55:20,">>> "" foo "".center(20, ""="")
+'======= foo ========'
+
+#pythontip from @brianokken
+https://twitter.com/brianokken/status/1029880505750171648
+",simecek,
+8/20/2018 8:36:26,"Get a day of the week for a given date with datetime.date.weekday().
+(Monday is 0, Sunday is 6):
+>>> new_year = datetime.date(2019, 1, 1)
+>>> new_year.weekday()
+1
+#python #datetime",karlafej,
+8/21/2018 4:03:46,"#pythontip from @daviddelachurch
+Loving #Python3.5 PEP 448 for overwriting a dictionary of default values:
+
+>>> defaults = {""lenny"": ""white"", ""carl"": ""black""}
+>>> overwrite = {""lenny"": ""yellow""}
+>>> overwritten = {**defaults, **overwrite}
+>>> overwritten
+{'lenny': 'yellow', 'carl': 'black'}",simecek,
+8/21/2018 8:19:46,"#pandas: See on which rows the column is changing its value using 
+
+df['col'].ne(df['col'].shift())
+
+(shift() move the whole column down by one space)
+https://stackoverflow.com/questions/40348541/pandas-diff-with-string",karlafej,
+8/22/2018 9:47:46,"Open a website in default web browser from #python scripts:
+
+import webbrowser
+webbrowser.open_new_tab(""https://stackoverflow.com"")
+
+https://docs.python.org/3.7/library/webbrowser.html",karlafej,
+8/24/2018 10:29:46,"Add padding around strings:
+
+>>> a = ""hello""
+>>> ""{:#^20}"".format(a)
+'#######hello########'
+>>> f""{a:*^11}""
+'***hello***'
+
+https://chrisalbon.com/python/basics/add_padding_around_string/
+https://docs.python.org/3.7/library/string.html#format-specification-mini-language
+
+#python",karlafej,
+8/24/2018 19:20:21,"Python Gotchas 
+
+https://docs.python-guide.org/writing/gotchas/",simecek,
+8/27/2018 17:04:40,"Do not use mutable default arguments (lists, sets, dicts...)
+
+Why? Consider a function:
+
+def append_to(element, to=[]):
+    to.append(element)
+    return to
+
+>>> append_to(12)
+[12]
+# looks ok, but...
+>>> append_to(42)
+[12, 42]
+# what? not ok
+
+Explanation: https://docs.python-guide.org/writing/gotchas/ ",simecek,
+8/28/2018 2:39:20,"zip_longest
+https://twitter.com/singhjayp/status/1034272446214533120",simecek,
+9/3/2018 3:14:51,"reprlib
+
+https://twitter.com/singhjayp/status/1036444829234982912",simecek,
+9/3/2018 9:27:49,"enumerate() takes a second parameter to change the starting count:
+
+>>> names = [""Alice"", ""Bob"", ""Charlie""]
+>>> list(enumerate(names, start=101))
+[(101, 'Alice'), (102, 'Bob'), (103, 'Charlie')]
+
+https://docs.python.org/3/library/functions.html#enumerate
+
+#python
+",karlafej,
+9/3/2018 22:04:02,"Poo plot: using emoji with matplotlib
+
+http://catherineh.github.io/programming/2017/10/24/emoji-data-markers-in-matplotlib",simecek,
+9/4/2018 7:13:59,"Use textwrap module to format text output.
+https://pymotw.com/3/textwrap/
+#python",karlafej,
+9/5/2018 10:56:23,"Make toy dataframes and series with pandas.util.testing:
+>>> import pandas.util.testing as tm
+>>> tm.makeDataFrame()
+
+#pandas #python 
+https://realpython.com/python-pandas-tricks/#2-make-toy-data-structures-with-pandas-testing-module",karlafej,
+9/6/2018 8:39:35,"Download and parse newspaper articles with #newspaper3k module.
+#python
+https://newspaper.readthedocs.io/en/latest/",karlafej,
+9/7/2018 16:33:30,"List all Python packaging systems and RT 
+https://twitter.com/vboykis
+
+KNOCK KNOCK
+Me: Who's there?
+Mailman: Package for you.
+Me: *opens door*
+Mailman: ""python http://setup.py  egg_info"" failed with error code 1
+Me: Oh, it's a Python package.",simecek,
+9/9/2018 0:26:09,"@python_tip 
+collections.Counter lets you find the most common # elements
+>>> import collections 
+>>> c = collections.Counter('helloworld') 
+>>> c 
+Counter({'l': 3, 'o': 2, 'e': 1, 'd': 1, 'h': 1, 'r': 1, 'w': 1}) 
+>>> c.most_common(3) 
+[('l', 3), ('o', 2), ('e', 1)]
+https://twitter.com/gauravn00/status/1038640318613282817",simecek,
+9/10/2018 2:22:03,"Ever wanted to plot graphs in the console? Try bashplotlib. 
+
+https://github.com/glamp/bashplotlib
+
+[COPY ONE OF EXAMPLES AS IMAGE]",simecek,
+9/10/2018 2:22:54,Many nice tips https://medium.freecodecamp.org/an-a-z-of-useful-python-tricks-b467524ee747,simecek,
+9/10/2018 2:25:29,"How to read two text files, line by line, simultaneously
+
+with open(file1) as f1, open(fil2) as f2:
+  for x, y in zip(f1, f2):
+     print(""{0}\t{1}"".format(x.strip(), y.strip()))
+
+https://stackoverflow.com/a/11295227/7651153",simecek,
+9/10/2018 2:51:09,Jupytext https://towardsdatascience.com/introducing-jupytext-9234fdff6c57,simecek,
+9/11/2018 22:32:19,"@python_tip When using reduce, it’s good idea to provide the third argument to reduce(function, iterable, initializer), to prevent ""TypeError: reduce() of empty sequence with no initial value"", if the given input sequence is empty. Please see the below example code:
+
+https://twitter.com/singhjayp/status/1039686797830369280",simecek,
+9/13/2018 18:32:35,"""in"" operator works on strings as well:
+
+>>> x = 'hello'
+>>> y = 'll'
+>>> y in x
+True",simecek,
+9/14/2018 22:20:23,"Debug exception in Jupyter Notebook
+
+https://twitter.com/radekosmulski/status/945739571735748609",simecek,
+9/16/2018 0:27:34,Understanding pandas selection https://twitter.com/gauravjain49/status/1040210122864295936,simecek,
+9/16/2018 0:31:21,"Apply a function to each row of a data frame with DataFrame.apply(your_function, axis=1)
+
+Example:
+
+import pandas as pd
+
+df = pd.DataFrame  ({'name': ['adam', 'petr', 'stanislav'],
+                  'url': ['http://hadamar.cz', 'https://petrifikace.com', 'http://google.cz'],
+                  'irrelevant': [1, 2, 3]})
+
+sel = df.apply(lambda row: row['name'] in row['url'], axis=1)
+df[sel]",simecek,
+9/18/2018 12:29:32,"Run simple #python code directly from the command line with the -c switch:
+
+python -c ""import datetime; print(datetime.datetime.now())""",karlafej,
+9/18/2018 13:29:17,"When web-scraping with Python, you can use cookies from your Firefox/Chrome browser:
+
+https://pypi.org/project/browsercookie/0.6.2/",simecek,
+9/22/2018 20:42:36,"Back to school? Or just want to expand your Python knowledge?
+
+The only way to learn to code is to actually spend time coding. PyBites offer 20-60 minute challenges you can code and verify in your browser.
+
+[LINK/IMG HERE]
+(Disclaimer: This is an affiliate link)
+
+#100DaysOfCode ",simecek,
+9/24/2018 14:30:53,"Get N minimal/maximal values with numpy.argpartition. Example:
+
+import numpy as np
+
+N = 3
+random_points = np.random.rand(100, 2)
+distance_from_origin = (random_points ** 2).sum(axis=1)       
+close_to_origin = np.argpartition(distance_from_origin, N)[:N]
+random_points[close_to_origin]",simecek,
+9/27/2018 14:03:39,Which line of your code is taking a lot of memory https://twitter.com/remykarem/status/1045311091947921410,simecek,
+10/1/2018 15:04:39,"If you want a lambda to capture a value ad the definition point and keep it, include it as a default value. Compare:
+>>> pow1 = [lambda x: x**n for n in range(5)]
+and 
+pow2 = [lambda x, n=n: x**n for n in range(5)]
+#python ",karlafej,
+10/4/2018 9:23:00,"Pretty print dictionaries with json.dumps
+
+>>> import json
+>>> d = {'a':'hello', 'd':1, 'b':5}
+>>> print(json.dumps(d, indent=4, sort_keys=True))",karlafej,
+10/12/2018 20:05:28,"Print all outputs, not only the last one:
+
+from IPython.core.interactiveshell import InteractiveShell
+
+# pretty print all cell's output and not just the last one
+InteractiveShell.ast_node_interactivity = ""all""
+
+Other tricks here http://forums.fast.ai/t/jupyter-notebook-enhancements-tips-and-tricks/17064/2",simecek,
+10/16/2018 2:54:58,"""Which came first: the chicken or the egg?"" question finally sorted out. Thank you, #Python.
+
+>>> x = [""🥚"", ""🐔""]
+>>> x.sort()
+>>> x
+['🐔', '🥚']",simecek,
+10/16/2018 11:10:45,"re.compile accepts the re.DOTALL flag, which makes . in #regexp match all characters, including newlines.
+
+#python #regex ",karlafej,
+10/16/2018 18:20:38,"10 most common Python mistakes
+
+https://www.toptal.com/python/top-10-mistakes-that-python-programmers-make",simecek,
+10/16/2018 18:49:12,"You can inspect your data with one line of code:
+
+https://twitter.com/beeonaposy/status/1052230299197874179
+http://nbviewer.jupyter.org/github/JosPolfliet/pandas-profiling/blob/master/examples/meteorites.ipynb
+
+#pandas-profiling",simecek,
+10/17/2018 11:33:46,"Iterate over #pandas dataframe rows with DataFrame.iterrows()
+
+for i, row in df.iterrows():
+    print(row[""title""])
+    print(row[""description""])",karlafej,
+10/18/2018 9:21:53,https://twitter.com/FlorimondManca/status/1048659301399760896,karlafej,
+10/18/2018 9:38:28,"Add elements of one dictionary to another with the update() method:
+
+>>> d1 = {'a' : 1, ""b"" : 2}
+>>> d2 = {'c' : 2, ""d"" : 42, ""a"" : 3}
+>>> d1.update(d2)
+>>> d1
+{'a': 3, 'b': 2, 'c': 2, 'd': 42}",karlafej,
+10/22/2018 15:03:20,"Suggestion:
+Use get_ipython().profile_dir.startup_dir to find your jupyter startup directory and then add this two line of codes in a file and place it in that directory to have this nice feature every time you enter your notebook.",@aliakbar_saleh,
+10/29/2018 11:18:09,"Want to know if your string contains any of multiple string patterns? Use any(). 
+
+>>> any(pattern in my_string for pattern in [""hello"", ""world""])",karlafej,
+10/30/2018 12:03:36,"The splitlines() method returns a list with all the lines in string.
+
+#python 
+https://www.tutorialspoint.com/python3/string_splitlines.htm",karlafej,
+11/1/2018 17:12:11,"NumPy's einsum
+
+http://ajcr.net/Basic-guide-to-einsum/",simecek,
+11/2/2018 17:41:55,"Use expand=True in the str.split() method if you want to split string into several columns in a #pandas dataframe.
+
+s  = pd.Series(['aa-123', 'ff-ds-ds', 'zzz-42', 'xx’])
+s.str.split(""-"", 1, expand=True)",karlafej,
+11/5/2018 21:32:03,"Connect Google Drive to your Colab:
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+Now you can see it in your Files panel.",simecek,
+11/6/2018 1:56:39,"#python tips & tricks #TipoftheDay 
+
+Have u ever wondered which modules are imported in a Python code?
+
+import sys
+print(sys.modules)
+
+* sys.modules is a dictionary; keys are imported module names, values are path to those modules
+
+https://twitter.com/GeekyTipsTricks/status/1059685421947543553",@GeekyTipsTricks,
+11/7/2018 21:10:16,"In #Python3, you can use print() in a list-comprehension!
+
+import sympy
+[print(x) for x in range(100) if sympy.isprime(x)]",simecek,
+11/8/2018 19:50:36,"#Python tip:  If your data is in a dictionary, perhaps from a JSON file, then str.format_map() is your new best friend.
+
+Pretty way:
+print('{name} works at {status} {company}'.format_map(info))
+
+Less pretty:
+print(f'{info[""name""]} works at {info[""status""]} {info[""company""]}')
+
+https://twitter.com/raymondh/status/1060689339703734272",simecek,
+11/13/2018 13:50:27,Use Ctrl+/ (or Cmd+/ on Mac) to comment/uncomment selected lines in #jupyter notebook.,karlafej,
+11/14/2018 10:51:31,"Check where and how to use asterisks in #python.
+*
+**
+
+https://treyhunner.com/2018/10/asterisks-in-python-what-they-are-and-how-to-use-them/
+
+blogpost by @treyhunner ",karlafej,
+11/16/2018 9:57:29,"Convert a list containing numbers into string:
+
+lst = [1, 2, 3, 4, 'hello', 'world']
+""_"".join([str(item) for item in lst])
+
+or
+
+""_"".join(map(str, lst))
+
+#python",karlafej,
+11/21/2018 18:04:11,"#Python3 pathlib is awesome. You can join paths by '/' operator:
+
+data_folder = Path(""my_project/data/"")
+file_to_open = data_folder/""raw_data.txt""
+
+Moreover, you can directly get content of the file:
+
+print(file_to_open.read_text())
+
+https://medium.com/@ageitgey/python-3-quick-tip-the-easy-way-to-deal-with-file-paths-on-windows-mac-and-linux-11a072b58d5f",simecek,
+11/21/2018 18:20:39,"#cutie: Command line User Tools for Input Easification 
+
+Because sometimes you just need a checkbox in your terminal window.
+
+https://github.com/kamik423/cutie
+
+(via @randal_olson)",karlafej,
+11/22/2018 15:02:18,The unary ~ (invert) operator yields the bitwise inversion of its integer argument. The bitwise inversion of x is defined as -(x+1). It only applies to integral numbers.  ,KarolinaBzdusek,
+11/26/2018 9:43:20,"When applied to a column of categories, pandas.get_dummies() will convert it into one-hot encoding
+https://stackoverflow.com/a/48170725/9968316",karlafej,
+11/26/2018 18:20:36,"The str() constructor takes an optional second argument for decoding bytes:
+
+https://twitter.com/raymondh/status/1067104653173637120",simecek,
+11/27/2018 11:16:38,"#pandas asfreq() converts #timeseries to the specified frequency
+
+https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/03.11-Working-with-Time-Series.ipynb
+",karlafej,
+11/28/2018 10:21:25,"re.X or re.VERBOSE flag allow you to write regular expression in a more readable way, allowing you to visually separate sections and insert comments.
+
+https://docs.python.org/3/library/re.html#re.X
+
+https://stackoverflow.com/a/101537/9968316
+
+",karlafej,
+11/28/2018 18:33:53,"Dict.get and lambda function used as switch
+
+https://twitter.com/kenessajr/status/1067833853530693632",simecek,
+11/30/2018 18:23:55,"np.nonzero() returns indices of the non-zero indices of an array.
+
+>>> x = np.array([[1,0,0], [0,2,0], [1,1,0]])
+>>> np.nonzero(x)
+(array([0, 1, 2, 2]), array([0, 1, 0, 1]))
+>>> x[np.nonzero(x)]
+array([1, 2, 1, 1])
+
+#python #numpy 
+https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.nonzero.html",karlafej,
+12/3/2018 17:47:10,"Debugging a decorated function:
+
+If you decorate a function, its __name__, __doc__ and __module__ might be different than what you expected. Fortunately, @functools.wraps can help you to get the original values.
+
+https://www.thecodeship.com/patterns/guide-to-python-function-decorators/",simecek,
+12/3/2018 18:02:28,"Do you need to deprecate a function or a method? Just use this simple #decorator:
+
+wiki.python.org/moin/PythonDec…
+
+(get more decorator ideas at Python Decorator Library:
+wiki.python.org/moin/PythonDec…)",simecek,
+12/4/2018 7:14:05,"#pythontip by @ManuTRILH:
+
+Packaging Python Scripts into CLI Commands
+
+@thegrumpyape link.medium.com/v92UEKTanS",simecek,
+12/7/2018 18:49:01,"Bohatý zdroj různých WTF tipů
+
+https://github.com/satwikkansal/wtfpython",simecek,
+12/8/2018 17:32:56,"Select elements based on multiple conditions from a Numpy Array in Python.
+
+https://thispointer.com/python-numpy-select-elements-or-indices-by-conditions-from-numpy-array/
+
+https://twitter.com/thisPtr/status/1071381631951355905",thisPtr,
+12/8/2018 17:37:17,"So you think you know #Python? You'll still learn from @__mharrison__ 's Illustrated Guide:
+
+>>> -1 % 3
+2
+>>> -1 % -3
+-1
+>>> 1 % -3
+-2
+
+Takeaway: ""...you don't want to do modulo w/negative
+numbrs on the denominator unless you're sure that's what you need""
+
+https://twitter.com/fabridamicelli/status/1071376418414698497",fabridamicelli,
+12/8/2018 17:38:38,"Sorting in Python
+
+https://wiki.python.org/moin/HowTo/Sorting/
+
+https://twitter.com/aliakbar_saleh/status/1071276468620181504",aliakbar_saleh,
+12/9/2018 5:17:28,">>> 0.1 + 0.1 + 0.1 == 0.3
+False
+>>> 0.1 + 0.1 + 0.1
+0.30000000000000004
+(via Facebook)
+
+https://floating-point-gui.de/?fbclid=IwAR3v5d33Ne64axRB8JmPsUDzWkrZiOQ87n9YUdlCArts-mB-lL9bYYvLTY4
+https://www3.ntu.edu.sg/home/ehchua/programming/java/datarepresentation.html?fbclid=IwAR3cQcVdX3Vm2esZpXttLkx0Xe7uSAumbSSRHpSxepAe4aNc1My1Euywb2A
+https://pmihaylov.com/floating-point-numbers/?fbclid=IwAR2dc-iPF8UlGQcr0CudX7LYLT9AtUvkMFqQ2yHRfaqCi2UKVE1fa4Zvu2s",simecek,
+12/9/2018 6:46:47,"GPU- and TPU-backed NumPy with differentiation and JIT compilation
+
+https://github.com/google/jax",simecek,
+12/9/2018 15:56:38,"(Not sure if this tip was here before, anyway, if you publish it, please don't publish my mail :) )
+
+Dictionary's update method can get also list of pair tuples as an input (https://docs.python.org/3/library/stdtypes.html#dict.update).
+
+It might be problematic if the list contains also non key/pair values.
+Let's look at the following code example:
+
+>>> a={1:'1',2:'2'}       
+>>> b=[(3,'3'),(4,'4')]       
+>>> a.update(b)       
+>>> a       
+{1: '1', 2: '2', 3: '3', 4: '4'}
+
+>>> c=[(5,'5'), 6, (7,'7')]       
+>>> a.update(c)       
+Traceback (most recent call last):
+  File ""<pyshell#15>"", line 1, in <module>
+    a.update(c)
+TypeError: cannot convert dictionary update sequence element #1 to a sequence
+
+>>> a       
+{1: '1', 2: '2', 3: '3', 4: '4', 5: '5'}  # one item of c was added to a!
+
+You can notice the last update method failed, however the tuple (5,'5') was entered to the dictionary 'a'!
+
+Bottom line: use this feature carefully, or don't use it at all.",,iosoftw@gmail.com
+12/10/2018 9:47:20,"Use matplotlib.pyplot.table to add tables to your #matplotlib plot. You can even generate an image containing only the table!
+https://pythonmatplotlibtips.blogspot.com/2018/11/matplotlib-only-table.html
+
+#python",karlafej,
+12/11/2018 10:12:03,"Use chardet library to guess encoding of your text files.
+
+https://chardet.readthedocs.io/en/latest/usage.html
+
+#python ",karlafej,
+12/13/2018 11:12:20,"#pythontip from @simonw 
+If you add a _repr_html_ method returning a HTML string to any class #Jupyter notebook will render the html inline.
+
+Demo: https://gist.github.com/ontouchstart//ea1631f69e507a81a9d9ec56b79e4d11
+
+Docs:
+https://ipython.readthedocs.io/en/stable/config/integrating.html#rich-display",karlafej,
+12/15/2018 18:30:31,"How to append elements to a #Numpy Array ?
+
+https://thispointer.com/numpy-append-how-to-append-elements-at-the-end-of-a-numpy-array-in-python/",@thisPtr,
+12/15/2018 18:32:17,"Python library provides difflib module, to compare the similarity of two string (or text file). Common use case is to find duplicate entries, or for typing errors correction in two strings.  (See difflib module)  Please see below example code.
+
+https://twitter.com/singhjayp/status/1072553327169294337
+
+",@singhjayp,
+12/31/2018 6:19:03,"#python lists have the count() method that returns the number of occurrences of an element:
+
+>>> lst = [1, 1, 2, 3, 4, 5, 1, 3, 3, 3, 7, 9, 3]
+>>> lst.count(2)
+1
+
+Most common item:
+>>> max(lst, key=lst.count) 
+3 
+",karlafej,
+1/1/2019 15:35:52,"Use #holidays library to check whether a date is holiday or not.
+
+>>> from datetime import date
+>>> import holidays
+>>> today = date.today()
+>>> today in holidays.Czech()
+True
+
+Happy New Year! #Python 
+https://www.geeksforgeeks.org/python-holidays-library/
+",karlafej,
+1/2/2019 15:26:26,"#pythontip by @jonrocher:
+
+If you want to shuffle a #pandas dataframe, you can use the sample() method but specifying a fraction of 1:
+
+df.sample(frac=1)
+
+#Python https://twitter.com/jonrocher/status/1070007251929157633
+",karlafej,
