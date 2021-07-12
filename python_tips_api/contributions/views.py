@@ -99,7 +99,7 @@ class BlogActionView(generics.CreateAPIView):
             ACTION PERFORMED BY USER
     """
 
-    queryset = Blog.objects.all()
+    queryset = Tips.objects.all()
     serializer_class = ActionTipsSerializer
     permission_classes = [IsAuthenticated]
 
