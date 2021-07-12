@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from django.core.exceptions import ValidationError
 from . models import Tips
+from django.conf import settings
+
+ACTIONS = settings.ACTIONS
 
 class CreateTipSerializer(serializers.ModelSerializer):
     """
@@ -39,8 +42,20 @@ class TipsSerializer(serializers.NodelSerializer):
     RENDERS DATA ACCORDING TO THE FIELDS SET ALLOWES IN THE 
     FIELD OPTION
     """
-
+    likes = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Tips
         fields = "__all__"
 
+    
+    def get_likes(self, obj):
+        return obj.likes.count()
+class ActionTipsSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    action = serializers.CharField()
+
+    def validate_action(self, value):
+        value = value.lower().strip()
+        if not value in ACTIONS:
+            raise serializers.ValidationError(status=400)
+        return value
