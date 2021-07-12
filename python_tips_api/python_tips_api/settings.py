@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ACTIONS = ['like', 'unlike']
 
 AUTH_USER_MODEL = 'authentication.User'
 
