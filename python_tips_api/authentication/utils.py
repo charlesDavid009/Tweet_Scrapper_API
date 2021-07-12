@@ -1,17 +1,23 @@
-from django.urls import path
-from .views import RegisterView, LogoutAPIView, SetNewPasswordAPIView, VerifyEmail, LoginAPIView, PasswordTokenCheckAPI, RequestPasswordResetEmail
-from rest_framework_simplejwt.views import (
-    TokenRefreshView,
-)
+
+from django.core.mail import EmailMessage
 
 
-urlpatterns = [
-    path('register/', RegisterView.as_view(), name="register"),
-    path('login/', LoginAPIView.as_view(), name="login"),
-    path('logout/', LogoutAPIView.as_view(), name="logout"),
-    path('email-verify/', VerifyEmail.as_view(), name="email-verify"),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('request-reset-email/', RequestPasswordResetEmail.as_view(), name="request-reset-email"),
-    path('password-reset/<uidb64>/<token>/',PasswordTokenCheckAPI.as_view(), name='password-reset-confirm'),
-    path('password-reset-complete', SetNewPasswordAPIView.as_view(), name='password-reset-complete')
-]
+import threading
+
+
+class EmailThread(threading.Thread):
+
+    def __init__(self, email):
+        self.email = email
+        threading.Thread.__init__(self)
+
+    def run(self):
+        self.email.send()
+
+
+class Util:
+    @staticmethod
+    def send_email(data):
+        email = EmailMessage(
+            subject=data['email_subject'], body=data['email_body'], to=[data['to_email']])
+        EmailThread(email).start()
