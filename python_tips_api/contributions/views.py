@@ -86,3 +86,41 @@ class GetTweetLists(generics.ListAPIView):
         """
         qs = Tweets.Objects.all()
         return qs
+
+
+class BlogActionView(generics.CreateAPIView):
+    """
+    THIS VIEW CREATES THE LIKE OBJECT BY TAKING
+    THE ID OF THE OBJECT AND THEN ADDING THE ACTION
+    USER WISHES TO COMPLAIN ABOUT
+
+    ARGS:
+            ID OF TIPS
+            ACTION PERFORMED BY USER
+    """
+
+    queryset = Blog.objects.all()
+    serializer_class = ActionTipsSerializer
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs): #- Returns a serializer instance.
+        serializer = ActionTipsSerializer(data = self.request.data)
+        if serializer.is_valid():
+            data = serializer.validated_data
+            blog_id = data.get('id')
+            action = data.get('action')
+            queryset = self.get_queryset()
+            qs = queryset.filter(id = blog_id)
+            if not qs.exists():
+                return Response({}, status=status.HTTP_404_NOT_FOUND)
+            obj = qs.first()
+            if action == "like":
+                obj.likes.add(self.request.user)
+                serializer = BlogSerializer(obj)
+                #print(serializer.data)
+                return Response(serializer.data)
+            elif action == "unlike":
+                    obj.likes.remove(request.user)
+                    serializer = BlogSerializer(obj)
+                    return Response(serializer.data)
+            return Response({}, status=status.HTTP_400_BAD_REQUEST)
